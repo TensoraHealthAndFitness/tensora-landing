@@ -660,13 +660,13 @@
         "file": "blueprint-swap-exercise-dark.mp4",
         "webm": "blueprint-swap-exercise-dark.webm",
         "poster": "blueprint-swap-exercise-dark.jpg",
-        "start": 23.3,
-        "end": 28.9,
-        "durationSec": 5.6,
-        "sizeBytes": 363855,
-        "webmSizeBytes": 389769,
-        "notes": "Kept from the previous dark recording (has the gear overlay). black-demo-no-icon.mp4 has no single-exercise swap: no alternative is picked and there is no 'Swapped to\u2026' toast anywhere. Partial match: the 'Search exercises' sheet with muscle filter chips is browsed, but nothing is picked.",
-        "source": "previous dark recording (kept; no match in black-demo-no-icon.mp4)"
+        "start": 19.0,
+        "end": 25.0,
+        "durationSec": 6.0,
+        "sizeBytes": 312918,
+        "webmSizeBytes": 312042,
+        "notes": "Exercise list, tap the swap button on Barbell Standing Calf Raise, the 'Search exercises' sheet opens and the filter chips switch All -> Quads -> Glutes. No alternative is picked in this take (no 'Swapped to...' toast). Scaled from 414x848 to height 1028 and cropped 11 px per side to 480x1028. No gear overlay.",
+        "source": "swap-excercise-black.mp4"
       }
     }
   ],

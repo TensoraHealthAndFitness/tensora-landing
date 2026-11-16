@@ -28,8 +28,8 @@ def row(i, tab, name, title, body, ticks):
     </article>'''
 
 def card_grid(cards):
-    # Cards are always a quarter of the content width. Up to four sit in one row; more split
-    # into two rows, and a second row that is short of four spreads out to the full width.
+    # Each feature is its own black card (up to four per row), centred with a fixed gap.
+    # More than four split into two rows.
     n = len(cards)
     assert n <= 8, 'more than eight cards would need a third row'
     split = n if n <= 4 else 4
@@ -39,7 +39,8 @@ def card_grid(cards):
         fill = ' fill' if r > 0 else ''
         out += f'<div class="card-row{fill}">' + ''.join(mini(k + i, *c) for i, c in enumerate(cs)) + '</div>'
         k += len(cs)
-    return f'<div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span>{out}</div>'
+    band = '<span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span>'
+    return f'<div class="minis chapter-cards">{band}<div class="card-panel">{out}</div></div>'
 
 def mini(i, name, title, body):
     return f'''
@@ -235,9 +236,8 @@ faq_schema = '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":['
 
 import json as _json
 _manifest = _json.loads((OUT.parent / 'media' / 'manifest.json').read_text())
-# Dark takes that do not show what the copy describes stay on the light clip in dark mode:
-# swap exercise (black-demo-no-icon.mp4 never completes a swap; the old dark take is partial and has the gear icon).
-DARK_SKIP = {'blueprint-swap-exercise'}
+# Dark takes that do not show what the copy describes stay on the light clip in dark mode (none today).
+DARK_SKIP = set()
 DARK_CLIPS = sorted(c['file'][:-4] for c in _manifest['clips']
                     if c.get('dark') and c['file'][:-4] not in DARK_SKIP
                     and (OUT.parent / 'media' / (c['file'][:-4] + '-dark.mp4')).exists())

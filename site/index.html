@@ -171,8 +171,9 @@ a { color: inherit; }
 .band.l { left: 0; transform-origin: left; border-radius: 0 8px 8px 0; }
 .band.r { right: 0; transform-origin: right; border-radius: 8px 0 0 8px; }
 .hero.in .band { transform: scaleX(1); }
-.phone { margin: 0; padding: var(--s75); border-radius: 24px; background: var(--bezel); box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.45); flex: none; }
-.phone .screen { border-radius: 16px; overflow: hidden; aspect-ratio: 480 / 1028; background: #fff; }
+/* Samsung Galaxy style frame: thin even bezel, flatter corners */
+.phone { margin: 0; padding: 3px; border-radius: 18px; background: var(--bezel); box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.45); flex: none; }
+.phone .screen { border-radius: 15px; overflow: hidden; aspect-ratio: 480 / 1028; background: #fff; }
 .phone video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .phone-main { width: 264px; position: relative; z-index: 3; opacity: 0; transform: translateY(48px); transition: transform 900ms var(--ease) 100ms, opacity 900ms var(--ease) 100ms; }
 .phone-side { width: 216px; margin-top: var(--s700); position: relative; z-index: 2; opacity: 0; transition: transform 1100ms var(--ease) 450ms, opacity 900ms var(--ease) 450ms; }
@@ -248,16 +249,32 @@ section { padding: var(--s900) 0; }
 .mini[data-from="right"] { transform: translateX(72px); }
 .minis.in .mini { opacity: 1; transform: none; }
 .phone-sm { width: 176px; margin-bottom: var(--s100); }
-.chapter-cards { grid-template-columns: 1fr; margin: var(--s600) 0 calc(var(--s900) + var(--s600)); }
-.chapter-cards { position: relative; }
-/* Purple grid band behind the feature cards, edge to edge across the viewport */
-.chapter-cards .card-band.blue { position: absolute; top: calc(-1 * var(--s600)); bottom: calc(-1 * var(--s600)); left: 50%; width: 100vw; margin-left: -50vw; border-radius: 0; z-index: 0;
-  transform: scaleX(0); transition: transform 1100ms var(--ease); }
+/* Feature row under each main feature: purple band from both sides, then each phone's own black
+   card slides in from the left, then the phone and heading. */
+.chapter-cards { --pad: 20px; --min-gap: 32px; --row-w: min(100vw - 48px, 1320px);
+  --card-w: min(264px, calc((var(--row-w) - 8 * var(--pad) - 3 * var(--min-gap)) / 4));
+  position: relative; display: flex; justify-content: center; margin: var(--s600) 0 calc(var(--s900) + var(--s600)); }
+.chapter-cards .card-band.blue { position: absolute; top: calc(-1 * var(--s600)); bottom: calc(-1 * var(--s600)); width: 50vw; border-radius: 0; z-index: 0;
+  transform: scaleX(0); transition: transform 900ms var(--ease); }
+/* Each half paints its part of one viewport-wide gradient and grid, so they meet without a seam */
+.chapter-cards .card-band.blue { background-size: 100vw 100%; }
+.chapter-cards .card-band.l { right: 50%; transform-origin: left; background-position: left top; }
+.chapter-cards .card-band.r { left: 50%; transform-origin: right; background-position: right top; }
+.chapter-cards .card-band.l::after { background-position: right top; }
+.chapter-cards .card-band.r::after { background-position: left top; }
 .chapter-cards.in .card-band { transform: scaleX(1); }
-.card-row { position: relative; z-index: 1; }
-.card-row { display: flex; justify-content: center; gap: var(--s300); }
-.card-row.fill { justify-content: space-between; }
-.card-row .mini { flex: 0 0 calc((100% - 3 * var(--s300)) / 4); }
+.card-panel { position: relative; z-index: 1; display: grid; gap: var(--s500); width: var(--row-w); flex: none; }
+/* Same 32px gap between cards whatever the count; the row is centred on the band */
+.card-row { display: flex; justify-content: center; align-items: stretch; gap: var(--min-gap); }
+.chapter-cards .mini { width: calc(var(--card-w) + 2 * var(--pad)); flex: none; padding: var(--pad) var(--pad) var(--s300); align-content: start;
+  border-radius: 12px; background: #0b0d17; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 32px 64px -24px rgba(8, 10, 30, 0.6);
+  opacity: 0; transform: translateX(-100vw); transition: transform 1000ms var(--ease), opacity 400ms var(--ease); transition-delay: calc(650ms + var(--i) * 120ms); }
+.chapter-cards.in .mini { opacity: 1; transform: none; }
+.chapter-cards .mini > * { opacity: 0; transform: translateY(24px); transition: transform 800ms var(--ease), opacity 700ms var(--ease);
+  transition-delay: calc(1450ms + var(--i) * 120ms); }
+.chapter-cards.in .mini > * { opacity: 1; transform: none; }
+.chapter-cards .mini h4 { color: #ffffff; max-width: 240px; }
+.chapter-cards .phone-sm { width: var(--card-w); }
 .mini h4 { color: var(--ink); }
 
 /* Tagline reveal */
@@ -338,8 +355,8 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .feat-copy { text-align: left; }
   .tabs-strip { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .tiles, .minis { grid-template-columns: 1fr 1fr; }
-  .card-row, .card-row.fill { flex-wrap: wrap; justify-content: center; }
-  .card-row .mini { flex-basis: calc((100% - var(--s300)) / 2); }
+  .chapter-cards { --card-w: min(264px, calc((var(--row-w) - 4 * var(--pad) - var(--min-gap)) / 2)); }
+  .card-row { flex-wrap: wrap; row-gap: var(--s500); }
 }
 @media (max-width: 640px) {
   .wrap { padding: 0 var(--s200); }
@@ -358,7 +375,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .tabs-strip { grid-template-columns: 1fr 1fr; }
   .tabs-strip a:last-child { grid-column: 1 / -1; }
   .split, .tiles, .steps, .contact, .minis { grid-template-columns: 1fr; }
-  .card-row .mini { flex-basis: 100%; }
+  .chapter-cards { --row-w: calc(100vw - 32px); --card-w: min(216px, calc(var(--row-w) - 2 * var(--pad))); }
   .signup { grid-template-columns: 1fr; }
   .hero .sub br { display: none; }
   .vision { padding: var(--s600) var(--s200); }
@@ -371,7 +388,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-property: opacity, color, background-color !important; transition-duration: 300ms !important; transition-delay: 0ms !important; }
   .band, .fill, .rule .half { transform: none !important; }
-  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, .card-band, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
+  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, .card-band, .card-panel, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
   .stage .side-l { transform: rotate(-4deg) !important; }
   .stage .side-r { transform: rotate(4deg) !important; }
   .tagline .w { color: var(--ink); }
@@ -493,7 +510,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Session length, exercise count and total sets at a glance</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A source chip for program, routine or generated sessions</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weekly sets against your target, with the top muscles</span></li></ul>
       </div>
     </article>
-    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+    <div class="minis chapter-cards"><span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span><div class="card-panel"><div class="card-row">
       <article class="mini" style="--i:0" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-day" poster="media/blueprint-swap-day.jpg?v=4" aria-label="Change the whole day in one sheet"><source src="media/blueprint-swap-day.webm?v=4" type="video/webm"><source src="media/blueprint-swap-day.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Swap today for rest, a routine or another day</h4>
@@ -501,7 +518,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <article class="mini" style="--i:1" data-from="right">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-exercise" poster="media/blueprint-swap-exercise.jpg?v=4" aria-label="Swap one exercise"><source src="media/blueprint-swap-exercise.webm?v=4" type="video/webm"><source src="media/blueprint-swap-exercise.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Swap any exercise for one that hits the same muscle</h4>
-      </article></div></div>
+      </article></div></div></div>
   </section>
   <section class="chapter" id="train" aria-labelledby="train-title">
     <header class="chapter-head">
@@ -520,7 +537,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Working, warm up, drop and failure sets</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight in kilograms or pounds, reps and optional effort</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Every exercise keeps its own timer, so your workout time stays honest</span></li></ul>
       </div>
     </article>
-    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+    <div class="minis chapter-cards"><span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span><div class="card-panel"><div class="card-row">
       <article class="mini" style="--i:0" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-how-to" poster="media/grind-how-to.jpg?v=4" aria-label="Form cues and alternatives on the same screen"><source src="media/grind-how-to.webm?v=4" type="video/webm"><source src="media/grind-how-to.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Form cues and alternatives on the same screen</h4>
@@ -528,7 +545,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <article class="mini" style="--i:1" data-from="right">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-add-alternative" poster="media/grind-add-alternative.jpg?v=4" aria-label="Add an exercise mid workout"><source src="media/grind-add-alternative.webm?v=4" type="video/webm"><source src="media/grind-add-alternative.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Add an exercise mid workout and keep your logged sets</h4>
-      </article></div></div>
+      </article></div></div></div>
   </section>
   <section class="chapter" id="history" aria-labelledby="history-title">
     <header class="chapter-head">
@@ -547,7 +564,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Duration, volume or reps</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Week, month or year</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A monthly summary of workouts, volume and streak</span></li></ul>
       </div>
     </article>
-    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+    <div class="minis chapter-cards"><span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span><div class="card-panel"><div class="card-row">
       <article class="mini" style="--i:0" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-workout-detail" poster="media/pivot-workout-detail.jpg?v=4" aria-label="Every workout and exercise"><source src="media/pivot-workout-detail.webm?v=4" type="video/webm"><source src="media/pivot-workout-detail.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Every workout in full, even ones you forgot to log</h4>
@@ -563,7 +580,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <article class="mini" style="--i:3" data-from="right">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-measures" poster="media/pivot-measures.jpg?v=4" aria-label="Measurements beyond body weight"><source src="media/pivot-measures.webm?v=4" type="video/webm"><source src="media/pivot-measures.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">16 body measurements with trend charts</h4>
-      </article></div></div>
+      </article></div></div></div>
   </section>
   <section class="chapter" id="physique" aria-labelledby="physique-title">
     <header class="chapter-head">
@@ -582,7 +599,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>2D or 3D, front and back</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>100% means five hard sets, three times a week</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Last week, last month or last year</span></li></ul>
       </div>
     </article>
-    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+    <div class="minis chapter-cards"><span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span><div class="card-panel"><div class="card-row">
       <article class="mini" style="--i:0" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-recovery" poster="media/physique-recovery.jpg?v=4" aria-label="Know what is ready to train"><source src="media/physique-recovery.webm?v=4" type="video/webm"><source src="media/physique-recovery.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">See which muscles are ready to train</h4>
@@ -594,7 +611,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <article class="mini" style="--i:2" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-period" poster="media/physique-period.jpg?v=4" aria-label="Week, month or year"><source src="media/physique-period.webm?v=4" type="video/webm"><source src="media/physique-period.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Shade the map by week, month or year</h4>
-      </article></div></div>
+      </article></div></div></div>
   </section>
   <section class="chapter" id="coach" aria-labelledby="coach-title">
     <header class="chapter-head">
@@ -613,11 +630,11 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Filters for goal, level, days per week and equipment</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Day routines with time and muscles worked</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Follow a program and Coach tracks the week for you</span></li></ul>
       </div>
     </article>
-    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+    <div class="minis chapter-cards"><span class="card-band blue l" aria-hidden="true"></span><span class="card-band blue r" aria-hidden="true"></span><div class="card-panel"><div class="card-row">
       <article class="mini" style="--i:0" data-from="left">
         <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="coach-routine" poster="media/coach-routine.jpg?v=4" aria-label="Routines you can read before you start"><source src="media/coach-routine.webm?v=4" type="video/webm"><source src="media/coach-routine.mp4?v=4" type="video/mp4"></video></div></figure>
         <h4 class="title-2">Read every routine before you start</h4>
-      </article></div></div>
+      </article></div></div></div>
   </section></div>
 
 
@@ -822,7 +839,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 // Nav current section, mobile menu and signup forms.
 (() => {
   // Theme: light by default; the toggle switches to dark and swaps every clip to its dark recording.
-  const DARK_CLIPS = new Set(["blueprint-swap-day", "blueprint-today", "coach-program", "coach-routine", "grind-add-alternative", "grind-how-to", "grind-log-set", "physique-3d", "physique-period", "physique-recovery", "physique-strength", "pivot-calendar-month", "pivot-exercise-detail", "pivot-log-past-workout", "pivot-measures", "pivot-stats-calendar", "pivot-training-chart", "pivot-workout-detail", "pivot-year-heatmap"]), DARK_V = '4';
+  const DARK_CLIPS = new Set(["blueprint-swap-day", "blueprint-swap-exercise", "blueprint-today", "coach-program", "coach-routine", "grind-add-alternative", "grind-how-to", "grind-log-set", "physique-3d", "physique-period", "physique-recovery", "physique-strength", "pivot-calendar-month", "pivot-exercise-detail", "pivot-log-past-workout", "pivot-measures", "pivot-stats-calendar", "pivot-training-chart", "pivot-workout-detail", "pivot-year-heatmap"]), DARK_V = '5';
   const root = document.documentElement, themeBtn = document.querySelector('.theme-btn');
   const applyClips = (dark) => document.querySelectorAll('video[data-clip]').forEach((v) => {
     const base = v.dataset.clip, name = dark && DARK_CLIPS.has(base) ? base + '-dark' : base;
