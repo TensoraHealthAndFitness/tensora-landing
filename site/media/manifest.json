@@ -1,0 +1,1095 @@
+{
+  "source": "demo.mp4 (480x1028, 120 fps, 353.6 s, light mode)",
+  "notes": "A floating round gear button (dev overlay) sits at the lower right of every frame. Physique status-report numbers and Pivot history are sample data.",
+  "clips": [
+    {
+      "file": "blueprint-today.mp4",
+      "webm": "blueprint-today.webm",
+      "poster": "blueprint-today.jpg",
+      "start": 45.7,
+      "end": 50.7,
+      "durationSec": 5.0,
+      "sizeBytes": 377326,
+      "webmSizeBytes": 469969,
+      "tab": "Blueprint",
+      "feature": "Today's plan",
+      "description": "The Blueprint tab shows today's session card (Generated for you, 44 min \u00b7 5 exercises \u00b7 15 sets), the weekly volume target and scrolls the exercise list down to the Finish workout button, then back up.",
+      "highlights": [
+        "TODAY'S SESSION \u00b7 WEEK 1",
+        "Source chip: GENERATED FOR YOU",
+        "44 min \u00b7 5 exercises \u00b7 15 sets",
+        "Region chips: Glutes, Hamstrings, Core",
+        "Weekly volume target 0 / 60 sets (Quads 0/12, Glutes 0/12)",
+        "Today's exercises 0/5 complete, + Add exercise",
+        "Dumbbell Goblet Squat, Dumbbell Romanian Deadlift, Sled Leg Press, Lever Lying Leg Curl, Cable Horizontal Pallof Press",
+        "Finish workout button"
+      ],
+      "dark": {
+        "file": "blueprint-today-dark.mp4",
+        "webm": "blueprint-today-dark.webm",
+        "poster": "blueprint-today-dark.jpg",
+        "start": 9.6,
+        "end": 15.2,
+        "durationSec": 5.6,
+        "sizeBytes": 324443,
+        "webmSizeBytes": 354765,
+        "notes": "Today's session card (Generated for you \u00b7 Upper body build, 40 min \u00b7 4 exercises \u00b7 12 sets, rest day), weekly volume target 0/66 sets, exercise list scrolls down and back up. Different plan from light (no Coach PPL program, 4 exercises, no Finish workout button reached).",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "grind-log-set.mp4",
+      "webm": "grind-log-set.webm",
+      "poster": "grind-log-set.jpg",
+      "start": 61.5,
+      "end": 69.5,
+      "durationSec": 8.0,
+      "sizeBytes": 286503,
+      "webmSizeBytes": 333309,
+      "tab": "Grind",
+      "feature": "Log a set",
+      "description": "On Dumbbell Goblet Squat, the user steps the weight from 0 to 2.5 kg and reps from 10 to 11, picks RPE 7 and taps Log set; a 01:30 rest timer starts and the logged sets are listed below.",
+      "highlights": [
+        "THE GRIND \u00b7 Dumbbell Goblet Squat \u00b7 % Complete",
+        "Target 3 \u00d7 10 reps, set counter 1/3 \u2192 3/3",
+        "Set type chips: Working, Warm-up, Drop, Failure",
+        "Weight 2.5 kg / Reps 11 steppers, Effort (RPE) 6\u201310",
+        "Log set \u2192 rest timer 01:30 with +15s / Skip",
+        "Logged: W 2.5 kg \u00d7 11 \u00b7 RPE 7",
+        "Finish exercise, Next exercise: Dumbbell Romanian Deadlift"
+      ],
+      "dark": {
+        "file": "grind-log-set-dark.mp4",
+        "webm": "grind-log-set-dark.webm",
+        "poster": "grind-log-set-dark.jpg",
+        "start": 53.0,
+        "end": 60.0,
+        "durationSec": 7.0,
+        "sizeBytes": 140164,
+        "webmSizeBytes": 141698,
+        "notes": "3/4 Sit-up: weight stepped 0\u21925 kg, reps 10\u219211, RPE 8, Log set; set counter 1/3\u21922/3, rest timer 01:30 with +15s/Skip and logged row '5 kg \u00d7 11 \u00b7 RPE 8'. Set type stays Working.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "grind-how-to.mp4",
+      "webm": "grind-how-to.webm",
+      "poster": "grind-how-to.jpg",
+      "start": 71.5,
+      "end": 77.5,
+      "durationSec": 6.0,
+      "sizeBytes": 566008,
+      "webmSizeBytes": 643459,
+      "tab": "Grind",
+      "feature": "How-to and alternatives",
+      "description": "Scrolling the exercise page through the numbered 'How to perform' steps and the alternatives carousel, ending on the Target muscles body map.",
+      "highlights": [
+        "How to perform, 6 numbered steps",
+        "ALTERNATIVES \u00b7 6 \u2014 Same muscle and movement, other equipment",
+        "Cards: Kettlebell Goblet Squat, Band Squat, Lever Squat (Plate) with Swap to this",
+        "TARGET MUSCLES 2D / 3D front and back map",
+        "Primary \u00b7 Quads; Secondary \u00b7 Glutes, Hamstrings, Calves"
+      ],
+      "dark": {
+        "file": "grind-how-to-dark.mp4",
+        "webm": "grind-how-to-dark.webm",
+        "poster": "grind-how-to-dark.jpg",
+        "start": 66.5,
+        "end": 72.2,
+        "durationSec": 5.7,
+        "sizeBytes": 498648,
+        "webmSizeBytes": 632563,
+        "notes": "How to perform (5 steps), Alternatives \u00b7 6 carousel swiped (Suspender Crunch, Ring Supine Crunch, Ring Hanging Leg Hip Raise\u2026, each with 'Swap to this'), ending on Target muscles 2D/3D. Exercise is 3/4 Sit-up, not Barbell Bench Press.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "grind-add-alternative.mp4",
+      "webm": "grind-add-alternative.webm",
+      "poster": "grind-add-alternative.jpg",
+      "start": 40.5,
+      "end": 46.0,
+      "durationSec": 5.47,
+      "sizeBytes": 457882,
+      "webmSizeBytes": 550807,
+      "tab": "Grind",
+      "feature": "Add an alternative mid-workout",
+      "description": "Tapping an alternative opens a confirmation dialog; after Add, a toast confirms it and Cable Bench Press appears as the next exercise.",
+      "highlights": [
+        "Dialog: 'Add Cable Bench Press? Keep your 3 logged sets of Barbell Bench Press and add Cable Bench Press after it?'",
+        "CANCEL / ADD",
+        "Toast: 'Added Cable Bench Press.'",
+        "Next exercise: Cable Bench Press \u00b7 3 sets \u00b7 12 reps",
+        "Logged sets 5 kg \u00d7 6 (\u00d73)"
+      ],
+      "dark": {
+        "file": "grind-add-alternative-dark.mp4",
+        "webm": "grind-add-alternative-dark.webm",
+        "poster": "grind-add-alternative-dark.jpg",
+        "start": 106.0,
+        "end": 112.0,
+        "durationSec": 6.0,
+        "sizeBytes": 433053,
+        "webmSizeBytes": 562174,
+        "notes": "Dialog 'Add Suspender Crunch (Forearm Support)? Keep your 3 logged sets of 3/4 Sit-up\u2026' \u2192 ADD \u2192 toast 'Added Suspender Crunch (Forearm Support).' \u2192 Next exercise shows Suspender Crunch (Forearm Support) \u00b7 3 sets \u00b7 12 reps above the 5 kg \u00d7 11 logged sets.",
+        "source": "black-demo-no-icon.mp4"
+      }
+    },
+    {
+      "file": "physique-3d.mp4",
+      "webm": "physique-3d.webm",
+      "poster": "physique-3d.jpg",
+      "start": 118.95,
+      "end": 122.1,
+      "durationSec": 3.15,
+      "sizeBytes": 121060,
+      "webmSizeBytes": 141463,
+      "tab": "Physique",
+      "feature": "3D muscle map",
+      "description": "The Body distribution card in 3D mode: a male anatomy model with trained muscles shaded red turns through a full 360\u00b0 rotation.",
+      "highlights": [
+        "BODY DISTRIBUTION",
+        "Period dropdown 'Last week'",
+        "2D / 3D toggle (3D selected)",
+        "Muscle density index 21.4 \u21932%",
+        "Waist-to-shoulder 0.72 CLOSE, target 0.618"
+      ],
+      "dark": {
+        "file": "physique-3d-dark.mp4",
+        "webm": "physique-3d-dark.webm",
+        "poster": "physique-3d-dark.jpg",
+        "start": 145.25,
+        "end": 149.05,
+        "durationSec": 3.8,
+        "sizeBytes": 104301,
+        "webmSizeBytes": 115826,
+        "notes": "Body distribution 3D model turning (front \u2192 top \u2192 front \u2192 side) with period Last year; the Last-week 3D view is only ~2.3 s (138.9\u2013141.3 s) before the dropdown opens, so it was not used.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "physique-period.mp4",
+      "webm": "physique-period.webm",
+      "poster": "physique-period.jpg",
+      "start": 67.0,
+      "end": 72.5,
+      "durationSec": 5.5,
+      "sizeBytes": 160633,
+      "webmSizeBytes": 177611,
+      "tab": "Physique",
+      "feature": "Muscle map periods",
+      "description": "The period dropdown is opened and switched from Last week to Last month and then Last year, and the 3D model's shading updates each time.",
+      "highlights": [
+        "Dropdown options: Last week, Last month, Last year",
+        "2D / 3D toggle",
+        "3D body with red-shaded muscles"
+      ],
+      "dark": {
+        "file": "physique-period-dark.mp4",
+        "webm": "physique-period-dark.webm",
+        "poster": "physique-period-dark.jpg",
+        "start": 140.6,
+        "end": 145.8,
+        "durationSec": 5.2,
+        "sizeBytes": 137300,
+        "webmSizeBytes": 153897,
+        "notes": "3D body rotates on Last week, dropdown \u2192 Last month, dropdown \u2192 Last year; shading updates each time.",
+        "source": "black-demo-no-icon.mp4"
+      }
+    },
+    {
+      "file": "physique-recovery.mp4",
+      "webm": "physique-recovery.webm",
+      "poster": "physique-recovery.jpg",
+      "start": 12.9,
+      "end": 20.9,
+      "durationSec": 8.0,
+      "sizeBytes": 250965,
+      "webmSizeBytes": 329354,
+      "tab": "Physique",
+      "feature": "Recovery estimate in 3D",
+      "description": "The Recovery card in 3D mode: a body colour-coded by recovery state turns from the front to the side, with the legend and the tip card below.",
+      "highlights": [
+        "RECOVERY \u00b7 Recovery estimate, 2D / 3D",
+        "3D body with quads and hamstrings in red",
+        "'Tap a muscle or a row for its estimate'",
+        "Legend: Under 50%, Recovering, Ready",
+        "Tip card: 'Glutes, Quads and Hamstrings are still recovering. Train other muscles today: Deltoids, Chest and Lats / upper back are ready.'"
+      ],
+      "dark": {
+        "file": "physique-recovery-dark.mp4",
+        "webm": "physique-recovery-dark.webm",
+        "poster": "physique-recovery-dark.jpg",
+        "start": 14.9,
+        "end": 22.9,
+        "durationSec": 8.0,
+        "sizeBytes": 259070,
+        "webmSizeBytes": 266917,
+        "notes": "Top 30 px cropped (screen-recording indicator); padded to 480x1028.",
+        "source": "recovery-black.mp4"
+      },
+      "source": "recovery-white.mp4"
+    },
+    {
+      "file": "physique-strength.mp4",
+      "webm": "physique-strength.webm",
+      "poster": "physique-strength.jpg",
+      "start": 139.8,
+      "end": 143.8,
+      "durationSec": 4.0,
+      "sizeBytes": 456365,
+      "webmSizeBytes": 435045,
+      "tab": "Physique",
+      "feature": "Recovery list and strength records",
+      "description": "Scrolling past the per-muscle recovery list and 'How this estimate works' to the Performance section with the strength score, weekly volume bars and PR wall.",
+      "highlights": [
+        "RECOVERING \u00b7 3: Glutes, Quads, Hamstrings at 0% with 'ready in' times",
+        "NOT TRAINED LATELY list",
+        "PERFORMANCE \u00b7 +43.7k this month",
+        "Strength score 282k with trend line",
+        "Weekly volume 5.5k kg bars",
+        "PR WALL: Chest 55.7k kg, Back 91.5k kg, Shoulders 23k kg, Arms 55.5k kg, Legs 136k kg, Core 4k kg"
+      ],
+      "dark": {
+        "file": "physique-strength-dark.mp4",
+        "webm": "physique-strength-dark.webm",
+        "poster": "physique-strength-dark.jpg",
+        "start": 162.7,
+        "end": 167.9,
+        "durationSec": 5.2,
+        "sizeBytes": 556783,
+        "webmSizeBytes": 668007,
+        "notes": "Recovery list (Recovering \u00b7 1: Abs 0%, Not trained lately \u00b7 11), How this estimate works, then Performance: strength score 282k +43.7K, weekly volume 5.5k kg bars, PR wall. Fresh-account data, so no READY rows.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-training-chart.mp4",
+      "webm": "pivot-training-chart.webm",
+      "poster": "pivot-training-chart.jpg",
+      "start": 144.6,
+      "end": 152.6,
+      "durationSec": 8.0,
+      "sizeBytes": 157608,
+      "webmSizeBytes": 158127,
+      "tab": "Pivot",
+      "feature": "Training chart",
+      "description": "On the Pivot hub, the Training card switches range from This month to This week and This year, then the metric from Duration to Volume to Reps, and the bar chart redraws each time.",
+      "highlights": [
+        "NOVEMBER summary: Workouts 8, Volume 28.9k kg, Streak 26 wks",
+        "Toggle: Duration / Volume / Reps",
+        "Range dropdown: This week, This month, This year",
+        "Totals: 7h 20m (+14% vs Oct), 1h 50m this week, 100h 50m this year, 365,865 kg, 13,153 reps",
+        "EXPLORE: Statistics, Exercises, Measures, Calendar"
+      ],
+      "dark": {
+        "file": "pivot-training-chart-dark.mp4",
+        "webm": "pivot-training-chart-dark.webm",
+        "poster": "pivot-training-chart-dark.jpg",
+        "start": 169.0,
+        "end": 176.0,
+        "durationSec": 7.0,
+        "sizeBytes": 172613,
+        "webmSizeBytes": 158185,
+        "notes": "Training card: range This month \u2192 This week \u2192 This year, then Duration \u2192 Volume \u2192 Reps; chart redraws each time (7h 20m, 1h 50m, 100h 50m, 365,865 kg, 13,153 reps).",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-workout-detail.mp4",
+      "webm": "pivot-workout-detail.webm",
+      "poster": "pivot-workout-detail.jpg",
+      "start": 295.9,
+      "end": 299.4,
+      "durationSec": 3.5,
+      "sizeBytes": 385409,
+      "webmSizeBytes": 359010,
+      "tab": "Pivot",
+      "feature": "Workout detail",
+      "description": "A logged workout's detail page (Pull \u00b7 4 Nov) scrolls through its stats and every exercise with sets, estimated 1RM and record badges.",
+      "highlights": [
+        "Pull \u00b7 4 Nov, 17:35\u201318:30, 3 exercises, 1 warm-up set",
+        "4 records",
+        "Duration 55m, Volume 2,073 kg, Sets 9, Reps 98",
+        "Per-set table: weight \u00d7 reps and 1RM column, Best est. 1RM",
+        "Record badges: Session, Weight, 1RM, Volume",
+        "Cable Lat Pulldown, Dumbbell Bent-Over Row, Cable Low Seated Row",
+        "Prev / next workout: Pull \u00b7 3 Nov, Legs \u00b7 5 Nov"
+      ],
+      "dark": {
+        "file": "pivot-workout-detail-dark.mp4",
+        "webm": "pivot-workout-detail-dark.webm",
+        "poster": "pivot-workout-detail-dark.jpg",
+        "start": 191.75,
+        "end": 196.6,
+        "durationSec": 4.85,
+        "sizeBytes": 432422,
+        "webmSizeBytes": 446374,
+        "notes": "Legs \u00b7 5 Nov workout detail: 17:35\u201318:30, 3 exercises, 1 warm-up set, 4 records; 55m / 4,690 kg / 9 sets / 82 reps; Barbell Deadlift, Barbell Hip Thrust, Lever Lying Leg Curl with per-set 1RM and Weight / 1RM / Volume / Session badges, Best est. 1RM, Exercise history, prev/next nav (Legs \u00b7 5 Nov / Upper \u00b7 7 Nov); scrolls back to the top.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-stats-calendar.mp4",
+      "webm": "pivot-stats-calendar.webm",
+      "poster": "pivot-stats-calendar.jpg",
+      "start": 201.0,
+      "end": 205.1,
+      "durationSec": 4.1,
+      "sizeBytes": 202158,
+      "webmSizeBytes": 190399,
+      "tab": "Pivot",
+      "feature": "Statistics: balance radar and streak calendar",
+      "description": "The Statistics page shows the hexagon Physique balance radar, then the Numbers/Calendar toggle switches The month to a streak calendar with flame days.",
+      "highlights": [
+        "PHYSIQUE BALANCE radar: Deltoids 47%, Lats 100%, Arms 19%, Waist 0%, Core 12%, Chest 47%",
+        "THE MONTH \u00b7 Numbers / Calendar toggle",
+        "Numbers: Workouts 19, Duration 17h 25m, Volume 65.8k kg, Sets 221",
+        "Calendar: flame-marked days joined by streak bars",
+        "20 weeks week streak, 6 days longest run, 19 workout days"
+      ],
+      "dark": {
+        "file": "pivot-stats-calendar-dark.mp4",
+        "webm": "pivot-stats-calendar-dark.webm",
+        "poster": "pivot-stats-calendar-dark.jpg",
+        "start": 217.0,
+        "end": 222.3,
+        "durationSec": 5.3,
+        "sizeBytes": 384644,
+        "webmSizeBytes": 368713,
+        "notes": "Statistics: Muscles this month 3D model, muscle details list, Physique balance radar (Deltoids 47%, Lats 100%, Arms 19%, Waist 9%, Core 12%, Chest 47%), then Numbers \u2192 Calendar toggle shows the flame streak calendar ('20 weeks week streak', '6 days longest run', '19 workout days').",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-exercise-detail.mp4",
+      "webm": "pivot-exercise-detail.webm",
+      "poster": "pivot-exercise-detail.jpg",
+      "start": 233.8,
+      "end": 241.8,
+      "durationSec": 8.0,
+      "sizeBytes": 355065,
+      "webmSizeBytes": 419549,
+      "tab": "Pivot",
+      "feature": "Exercise detail",
+      "description": "An exercise page (Dumbbell Bent-Over Row) rotates its 3D target-muscle model, then opens the Progress chart and the History tab.",
+      "highlights": [
+        "TARGET MUSCLES 2D / 3D, rotating model",
+        "Primary \u00b7 Lats / upper back; Secondary \u00b7 Deltoids, Biceps, Forearms",
+        "Tabs: Progress, History (31), How to",
+        "Metric chips: Heaviest weight, One-rep max, Best set volume",
+        "Progress: 12 kg, +2 kg vs 22 Aug, '3 months' bar chart",
+        "History: sessions by date with sets and 1RM per set"
+      ],
+      "dark": {
+        "file": "pivot-exercise-detail-dark.mp4",
+        "webm": "pivot-exercise-detail-dark.webm",
+        "poster": "pivot-exercise-detail-dark.jpg",
+        "start": 256.25,
+        "end": 264.25,
+        "durationSec": 8.0,
+        "sizeBytes": 458792,
+        "webmSizeBytes": 483521,
+        "notes": "Lever Lying Leg Curl: 3D target-muscle model (hamstrings) turning, then Progress tab (Heaviest weight 45 kg) \u2192 History (5) with sets, 1RM and Weight/1RM/Volume badges. The How to tab comes ~4 s later and is not in this clip.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-measures.mp4",
+      "webm": "pivot-measures.webm",
+      "poster": "pivot-measures.jpg",
+      "start": 0.0,
+      "end": 6.0,
+      "durationSec": 6.0,
+      "sizeBytes": 398859,
+      "webmSizeBytes": 443605,
+      "tab": "Pivot",
+      "feature": "Body measurements",
+      "description": "The Body weight page: a one-year trend line (-5.5 kg since May) and history with change pills, then a scroll through the Body and Circumferences lists and back.",
+      "highlights": [
+        "Body weight 72 kg, \u22125.7 kg since May, range '1 year'",
+        "Line chart 17 May \u2192 15 Nov, History 27 entries with change pills",
+        "BODY 3 of 3 logged: Body weight, Height, Body fat",
+        "CIRCUMFERENCES 13 of 13 logged: Neck, Shoulders, Chest, Waist, Hips, Biceps, Forearm, Thigh, Calf \u2026",
+        "Height 175 cm, +0.4 cm since Jun, trend chart, History 7 entries"
+      ],
+      "dark": {
+        "file": "pivot-measures-dark.mp4",
+        "webm": "pivot-measures-dark.webm",
+        "poster": "pivot-measures-dark.jpg",
+        "start": 1.1,
+        "end": 7.5,
+        "durationSec": 6.4,
+        "sizeBytes": 474252,
+        "webmSizeBytes": 440286,
+        "notes": "Body weight trend and history, the Body / Circumferences lists, then the Height trend chart.",
+        "source": "measure-black.mp4"
+      },
+      "source": "measure-white.mp4"
+    },
+    {
+      "file": "pivot-calendar-month.mp4",
+      "webm": "pivot-calendar-month.webm",
+      "poster": "pivot-calendar-month.jpg",
+      "start": 329.5,
+      "end": 335.4,
+      "durationSec": 5.9,
+      "sizeBytes": 951649,
+      "webmSizeBytes": 973636,
+      "tab": "Pivot",
+      "feature": "Calendar month view",
+      "description": "The Calendar's month view scrolls back through months of training days, each marked with a flame and joined by streak bars, then returns to the current month.",
+      "highlights": [
+        "Month / Year toggle",
+        "'26 weeks streak', '6-day run this month'",
+        "Per-month headers e.g. 'November 2026 \u00b7 9 days \u00b7 9 sessions', 'October 2026 \u00b7 16 days \u00b7 16 sessions', 'September 2026 \u00b7 19 days \u00b7 19 sessions'",
+        "Back through August, July, June, May to empty March / February 2026 ('No workouts')",
+        "Flame day tiles joined by streak bars"
+      ],
+      "dark": {
+        "file": "pivot-calendar-month-dark.mp4",
+        "webm": "pivot-calendar-month-dark.webm",
+        "poster": "pivot-calendar-month-dark.jpg",
+        "start": 313.5,
+        "end": 320.5,
+        "durationSec": 7.0,
+        "sizeBytes": 924769,
+        "webmSizeBytes": 754846,
+        "notes": "Calendar month view ('26 weeks streak', '6-day run this month') scrolls back from November through October\u2026 May 2026 to April/March 2026 ('No workouts'), flame days joined by streak bars.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-log-past-workout.mp4",
+      "webm": "pivot-log-past-workout.webm",
+      "poster": "pivot-log-past-workout.jpg",
+      "start": 302.9,
+      "end": 310.9,
+      "durationSec": 8.0,
+      "sizeBytes": 340902,
+      "webmSizeBytes": 324472,
+      "tab": "Pivot",
+      "feature": "Log a past workout",
+      "description": "Tapping a rest day (Wed 11 Nov) offers 'Log workout for Wed 11 Nov'; the backfill form opens, exercises are picked from the Add exercise sheet and appear with set rows.",
+      "highlights": [
+        "Day sheet: 'Wed 11 Nov 2026 \u00b7 Rest day'",
+        "Button: '+ Log workout for Wed 11 Nov'",
+        "Form: Name (optional), Start time 18:00, Duration 60 min",
+        "+ Add exercise \u2192 sheet with search and exercise list",
+        "3/4 Sit-up and 45 Degrees Side Bend added with set rows (weight, reps), + Add set",
+        "Cancel / Save workout"
+      ],
+      "dark": {
+        "file": "pivot-log-past-workout-dark.mp4",
+        "webm": "pivot-log-past-workout-dark.webm",
+        "poster": "pivot-log-past-workout-dark.jpg",
+        "start": 331.5,
+        "end": 339.0,
+        "durationSec": 7.5,
+        "sizeBytes": 369931,
+        "webmSizeBytes": 364534,
+        "notes": "Tap Thu 12 Nov \u2192 sheet 'Thu 12 Nov 2026 \u00b7 Rest day' with '+ Log workout for Thu 12 Nov' \u2192 backfill form (Name, Start time 18:00, Duration 60) \u2192 Add exercise sheet with search and catalog \u2192 3/4 Sit-up added with a Set / Weight / Reps row and + Add set, Cancel / Save workout. Ends just before the number keyboard opens.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "pivot-year-heatmap.mp4",
+      "webm": "pivot-year-heatmap.webm",
+      "poster": "pivot-year-heatmap.jpg",
+      "start": 337.0,
+      "end": 342.2,
+      "durationSec": 5.2,
+      "sizeBytes": 73677,
+      "webmSizeBytes": 80149,
+      "tab": "Pivot",
+      "feature": "Year heatmap",
+      "description": "The Calendar's year view shows 12 monthly heatmap blocks; the metric dropdown switches from Sets to Volume to Duration and the shading changes.",
+      "highlights": [
+        "Month / Year toggle (Year)",
+        "'Logged Core for 11 Nov'",
+        "Year dropdown 2026",
+        "Metric dropdown: Sets, Volume, Duration",
+        "Month blocks with day counts (May 10d, Jun 19d, Jul 19d, Aug 19d, Sep 19d \u2026)",
+        "Less \u2192 More legend, 'Tap a month to open it.'"
+      ],
+      "dark": {
+        "file": "pivot-year-heatmap-dark.mp4",
+        "webm": "pivot-year-heatmap-dark.webm",
+        "poster": "pivot-year-heatmap-dark.jpg",
+        "start": 347.1,
+        "end": 351.9,
+        "durationSec": 4.8,
+        "sizeBytes": 65757,
+        "webmSizeBytes": 68981,
+        "notes": "Year view 2026: metric dropdown Sets \u2192 Volume \u2192 Duration; shading and the 'top >' legend change (13 sets \u2192 4426 kg \u2192 55 min).",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "coach-program.mp4",
+      "webm": "coach-program.webm",
+      "poster": "coach-program.jpg",
+      "start": 359.9,
+      "end": 365.9,
+      "durationSec": 6.0,
+      "sizeBytes": 418099,
+      "webmSizeBytes": 467426,
+      "tab": "Coach",
+      "feature": "Programs",
+      "description": "A Coach program page (Starter Full Body) lists its three day routines, then the user goes back to the programs list and opens Upper / Lower Hypertrophy with its four routines.",
+      "highlights": [
+        "Starter Full Body: 3 days / week, 8 weeks, 3 routines, Equipment, How to progress",
+        "Routines \u00b7 3 per week: Full Body A, B, C",
+        "Programs / Routines switch, 'No program yet \u00b7 Browse programs'",
+        "Featured: Starter Full Body, Linear Strength Base, Upper / Lower Hypertrophy",
+        "Upper / Lower Hypertrophy: 4 days / week, 10 weeks, Routines \u00b7 4 per week: Upper A, Lower A, Upper B, Lower B",
+        "START DAY 1 / Follow program"
+      ],
+      "dark": {
+        "file": "coach-program-dark.mp4",
+        "webm": "coach-program-dark.webm",
+        "poster": "coach-program-dark.jpg",
+        "start": 373.0,
+        "end": 379.0,
+        "durationSec": 6.0,
+        "sizeBytes": 393924,
+        "webmSizeBytes": 428093,
+        "notes": "Coach tab Programs \u2192 Featured 'Starter Full Body' opens the program page (3 days/week, 8 weeks, 3 routines, equipment, how to progress), scrolls to Routines \u00b7 3 per week, taps Follow program \u2192 toast 'Following Starter Full Body\u2026'. Partial: no 'Your program' card at the start (the account had no program yet) and the program is Starter Full Body, not Push Pull Legs \u00d7 2.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "coach-routine.mp4",
+      "webm": "coach-routine.webm",
+      "poster": "coach-routine.jpg",
+      "start": 350.4,
+      "end": 355.8,
+      "durationSec": 5.4,
+      "sizeBytes": 279113,
+      "webmSizeBytes": 321218,
+      "tab": "Coach",
+      "feature": "Routine page",
+      "description": "A program day routine (Full Body A) shows its stats, a front/back body map of muscles worked and the exercise list with sets \u00d7 reps and rest.",
+      "highlights": [
+        "STARTER FULL BODY \u00b7 DAY 1 \u00b7 Full Body A",
+        "Duration ~32 min, Exercises 5, Sets 14",
+        "MUSCLES WORKED Glutes \u00b7 Chest \u00b7 Shoulders \u00b7 Abs \u00b7 Hamstrings body map",
+        "Equipment: Dumbbells, Cables & machines, Bodyweight",
+        "Exercises: Dumbbell Goblet Squat, Seated Lever Chest Press, Lever Seated Row, Lever Lying Leg Curl, Forearm Plank",
+        "START ROUTINE / Save to My routines"
+      ],
+      "dark": {
+        "file": "coach-routine-dark.mp4",
+        "webm": "coach-routine-dark.webm",
+        "poster": "coach-routine-dark.jpg",
+        "start": 380.6,
+        "end": 386.6,
+        "durationSec": 6.0,
+        "sizeBytes": 400329,
+        "webmSizeBytes": 402460,
+        "notes": "Routine Full Body A (Starter Full Body \u00b7 Day 1): ~32 min, 5 exercises, 14 sets, Muscles worked Glutes \u00b7 Chest \u00b7 Shoulders \u00b7 Abs \u00b7 Hamstrings body map, equipment, exercise list with sets \u00d7 reps and rest, START ROUTINE / Save to My routines tapped \u2192 'Saved \"Full Body A\" to My routines' toast.",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "blueprint-swap-day.mp4",
+      "webm": "blueprint-swap-day.webm",
+      "poster": "blueprint-swap-day.jpg",
+      "start": 22.8,
+      "end": 30.8,
+      "durationSec": 8.0,
+      "sizeBytes": 688030,
+      "webmSizeBytes": 697932,
+      "tab": "Blueprint",
+      "feature": "Swap today's workout",
+      "description": "The swap sheet on today's session lists Recharge, my routines, generated sessions and Coach routine categories; it scrolls through the generated workouts and expands the Gym category.",
+      "highlights": [
+        "Search workouts, + Create routine",
+        "GENERATED FOR YOU \u00b7 20: Upper body build, Hips & thighs, Upper body balance, Legs & core, Full body foundation, Chest & shoulders, Back & arms, Chest build \u2026",
+        "Exercise thumbnails and muscle chips per workout",
+        "COACH ROUTINES: Gym, Dumbbells only, At home, Bodyweight, Cardio / HIIT",
+        "Gym expanded: Chest and Triceps, Back and Biceps"
+      ],
+      "dark": {
+        "file": "blueprint-swap-day-dark.mp4",
+        "webm": "blueprint-swap-day-dark.webm",
+        "poster": "blueprint-swap-day-dark.jpg",
+        "start": 32.8,
+        "end": 40.5,
+        "durationSec": 7.7,
+        "sizeBytes": 953157,
+        "webmSizeBytes": 923428,
+        "notes": "Swap-workout sheet: Search workouts, Create routine, Recharge, My routines (empty), Generated for you (Upper body build, Hips & thighs, Full body foundation/balance/flow, focus sessions), Coach routines with the Gym category expanded. No program section (no program followed at this point).",
+        "source": "black-demo-no-icon.mp4"
+      },
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "blueprint-swap-exercise.mp4",
+      "webm": "blueprint-swap-exercise.webm",
+      "poster": "blueprint-swap-exercise.jpg",
+      "start": 343.0,
+      "end": 348.5,
+      "durationSec": 5.5,
+      "sizeBytes": 365936,
+      "webmSizeBytes": 400013,
+      "tab": "Blueprint",
+      "feature": "Swap an exercise",
+      "description": "The swap button on Barbell Bench Press opens a list of alternatives with muscle filter chips; picking Dumbbell Decline Bench Press replaces it and a toast confirms.",
+      "highlights": [
+        "Search exercises, filter chips: All, Hips & thighs, Back, Arms, Core",
+        "Options: Cable Bench Press, Dumbbell Bench Press, Dumbbell Decline Bench Press, Dumbbell Incline Bench Press, Dumbbell Squeeze Bench Press",
+        "Toast: 'Swapped to Dumbbell Decline Bench Press.'",
+        "SWAPPED badge on the exercise row"
+      ],
+      "dark": {
+        "file": "blueprint-swap-exercise-dark.mp4",
+        "webm": "blueprint-swap-exercise-dark.webm",
+        "poster": "blueprint-swap-exercise-dark.jpg",
+        "start": 23.3,
+        "end": 28.9,
+        "durationSec": 5.6,
+        "sizeBytes": 363855,
+        "webmSizeBytes": 389769,
+        "notes": "Kept from the previous dark recording (has the gear overlay). black-demo-no-icon.mp4 has no single-exercise swap: no alternative is picked and there is no 'Swapped to\u2026' toast anywhere. Partial match: the 'Search exercises' sheet with muscle filter chips is browsed, but nothing is picked.",
+        "source": "previous dark recording (kept; no match in black-demo-no-icon.mp4)"
+      }
+    }
+  ],
+  "stills": [
+    {
+      "file": "still-blueprint-today.jpg",
+      "tab": "Blueprint",
+      "description": "Today's session card (Generated for you \u00b7 44 min \u00b7 5 exercises \u00b7 15 sets, Glutes/Hamstrings/Core), weekly volume target 0/60 sets and the exercise list.",
+      "dark": "still-blueprint-today-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-grind-log-set.jpg",
+      "tab": "Grind",
+      "description": "Live logging for Dumbbell Goblet Squat: set type chips, weight 2.5 kg / reps 11 steppers, RPE row, Log set, 01:30 rest timer and a logged 2.5 kg \u00d7 11 \u00b7 RPE 7 set.",
+      "dark": "still-grind-log-set-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-physique-vtaper.jpg",
+      "tab": "Physique",
+      "description": "Status report: deviation 0.32, alignment D, V-taper radar (current status vs target), muscle density 21.4 and waist-to-shoulder 0.72 (sample data).",
+      "dark": "still-physique-vtaper-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-physique-3d.jpg",
+      "tab": "Physique",
+      "description": "Body distribution in 3D: front view of the anatomy model with trained muscles shaded red, Last week, 2D/3D toggle.",
+      "dark": "still-physique-3d-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-physique-recovery.jpg",
+      "tab": "Physique",
+      "description": "Recovery estimate in 3D: quads and hamstrings in red on the body model, legend (Under 50%, Recovering, Ready) and a 'train other muscles today' tip.",
+      "dark": "still-physique-recovery-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-physique-strength.jpg",
+      "tab": "Physique",
+      "description": "Strength score 282k with trend line, weekly volume bars (5.5k kg) and the PR wall by body region.",
+      "dark": "still-physique-strength-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-pivot-training.jpg",
+      "tab": "Pivot",
+      "description": "Pivot hub: November summary (8 workouts, 28.9k kg, 26-week streak), Training duration chart for this year (100h 50m) and Explore chips.",
+      "dark": "still-pivot-training-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-pivot-calendar.jpg",
+      "tab": "Pivot",
+      "description": "Calendar month view: October and September 2026 with flame-marked training days joined by streak bars.",
+      "dark": "still-pivot-calendar-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-pivot-year-heatmap.jpg",
+      "tab": "Pivot",
+      "description": "Year view: 12 monthly heatmap blocks for 2026, metric set to Duration, Less\u2192More legend.",
+      "dark": "still-pivot-year-heatmap-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    },
+    {
+      "file": "still-coach-routine.jpg",
+      "tab": "Coach",
+      "description": "Routine page (Full Body A): front/back muscles-worked body map, the exercise list with sets \u00d7 reps and START ROUTINE / Save to My routines.",
+      "dark": "still-coach-routine-dark.jpg",
+      "source": "whitemode-demo-no-icon.mp4"
+    }
+  ],
+  "timeline": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "screen": "Blueprint",
+      "whatHappens": "Today's session card, weekly volume target and exercise list scroll down to Finish workout and back up."
+    },
+    {
+      "start": 6.8,
+      "end": 19.5,
+      "screen": "Grind \u00b7 Barbell Bench Press",
+      "whatHappens": "Set type chosen, weight/reps stepped to 5 kg \u00d7 6, sets logged; rest timer and logged-set list appear."
+    },
+    {
+      "start": 19.5,
+      "end": 26.3,
+      "screen": "Grind \u00b7 exercise guide",
+      "whatHappens": "How to perform steps, alternatives carousel scrolled, Target muscles 2D."
+    },
+    {
+      "start": 26.3,
+      "end": 34.5,
+      "screen": "Grind \u00b7 target muscles 3D",
+      "whatHappens": "3D toggle; 'Loading 3D model' (~26.5\u201328 s), then the model rotates."
+    },
+    {
+      "start": 34.5,
+      "end": 40.0,
+      "screen": "Grind \u00b7 exercise info",
+      "whatHappens": "Exercise info expanded: Strength / Horizontal press / Barbell tags, common mistakes, tips."
+    },
+    {
+      "start": 40.0,
+      "end": 46.0,
+      "screen": "Grind \u00b7 add alternative",
+      "whatHappens": "Dialog 'Add Cable Bench Press?', toast 'Added Cable Bench Press.', next exercise updates."
+    },
+    {
+      "start": 46.0,
+      "end": 49.0,
+      "screen": "Grind",
+      "whatHappens": "Back on Barbell Bench Press logging (59% complete)."
+    },
+    {
+      "start": 49.0,
+      "end": 53.5,
+      "screen": "Blueprint",
+      "whatHappens": "Blueprint tab, exercise list scrolled."
+    },
+    {
+      "start": 53.5,
+      "end": 57.0,
+      "screen": "Physique \u00b7 status report",
+      "whatHappens": "Deviation 0.32 / alignment D, V-taper radar, muscle density 21.4, waist-to-shoulder 0.72, Body distribution 2D."
+    },
+    {
+      "start": 57.0,
+      "end": 58.0,
+      "screen": "Physique",
+      "whatHappens": "'Loading 3D model 100%' placeholder."
+    },
+    {
+      "start": 58.0,
+      "end": 67.0,
+      "screen": "Physique \u00b7 3D muscle map",
+      "whatHappens": "3D body rotates 360\u00b0."
+    },
+    {
+      "start": 67.0,
+      "end": 79.0,
+      "screen": "Physique \u00b7 period",
+      "whatHappens": "Period dropdown Last week \u2192 Last month \u2192 Last year; model dragged/rotated; Muscle details row."
+    },
+    {
+      "start": 79.0,
+      "end": 84.5,
+      "screen": "Physique \u00b7 recovery 2D",
+      "whatHappens": "Recovery front/back figures (red/green), legend, recovery tip card."
+    },
+    {
+      "start": 84.5,
+      "end": 86.0,
+      "screen": "Physique",
+      "whatHappens": "Loading 3D model."
+    },
+    {
+      "start": 86.0,
+      "end": 94.0,
+      "screen": "Physique \u00b7 recovery 3D",
+      "whatHappens": "Recovery 3D model rotates front \u2192 side \u2192 back."
+    },
+    {
+      "start": 94.0,
+      "end": 98.5,
+      "screen": "Physique \u00b7 recovery list",
+      "whatHappens": "Recovering (0%), Ready (100%), Not trained lately, How this estimate works."
+    },
+    {
+      "start": 98.5,
+      "end": 100.5,
+      "screen": "Physique \u00b7 performance",
+      "whatHappens": "Strength score 283k, weekly volume 4.1k kg, PR wall."
+    },
+    {
+      "start": 100.5,
+      "end": 108.5,
+      "screen": "Pivot hub",
+      "whatHappens": "November summary; Training chart toggled Duration/Volume/Reps and This month/This year."
+    },
+    {
+      "start": 108.5,
+      "end": 112.5,
+      "screen": "Pivot hub \u00b7 sessions",
+      "whatHappens": "Session cards with exercise rows and muscle-mix bars scrolled."
+    },
+    {
+      "start": 112.5,
+      "end": 126.5,
+      "screen": "Pivot \u00b7 workout detail",
+      "whatHappens": "Workout details (stats, per-exercise sets, 1RM, record badges), prev/next workout navigation."
+    },
+    {
+      "start": 126.5,
+      "end": 129.5,
+      "screen": "Pivot hub",
+      "whatHappens": "Back to hub."
+    },
+    {
+      "start": 129.5,
+      "end": 137.0,
+      "screen": "Pivot \u00b7 Statistics",
+      "whatHappens": "Muscles this month 2D, switched to 3D (loading ~131\u2013132 s), 3D figure."
+    },
+    {
+      "start": 137.0,
+      "end": 141.5,
+      "screen": "Pivot \u00b7 Statistics",
+      "whatHappens": "Physique balance radar; Numbers \u2192 Calendar toggle shows streak calendar."
+    },
+    {
+      "start": 141.5,
+      "end": 147.5,
+      "screen": "Pivot \u00b7 Statistics numbers",
+      "whatHappens": "Workouts/duration/volume/sets/week streak/longest run tiles; per-week Training load chart toggled Workouts/Duration/Volume/Sets; Week starts Monday, Appearance Light."
+    },
+    {
+      "start": 147.5,
+      "end": 151.0,
+      "screen": "Pivot \u00b7 Statistics",
+      "whatHappens": "Month navigation to previous month ('31 days complete')."
+    },
+    {
+      "start": 151.0,
+      "end": 157.0,
+      "screen": "Pivot \u00b7 Statistics 3D",
+      "whatHappens": "Loading then 3D muscles for that month."
+    },
+    {
+      "start": 157.0,
+      "end": 161.0,
+      "screen": "Pivot \u00b7 Exercises",
+      "whatHappens": "Exercise list (27 of 27) with filters, session counts and trend sparklines."
+    },
+    {
+      "start": 161.0,
+      "end": 186.0,
+      "screen": "Pivot \u00b7 exercise detail",
+      "whatHappens": "Cable Pushdown: stats, alternatives, target muscles 2D/3D (loading ~166.5\u2013167.5 s), Progress/History/How to tabs."
+    },
+    {
+      "start": 186.0,
+      "end": 191.0,
+      "screen": "Pivot \u00b7 Exercises",
+      "whatHappens": "Back to exercise list, then hub."
+    },
+    {
+      "start": 191.0,
+      "end": 204.5,
+      "screen": "Pivot \u00b7 Measures",
+      "whatHappens": "Body weight chart (1 year) and history list scrolled; Height (175 cm)."
+    },
+    {
+      "start": 204.5,
+      "end": 211.0,
+      "screen": "Pivot \u00b7 Measures",
+      "whatHappens": "Body fat 16.5% chart and history; circumferences list."
+    },
+    {
+      "start": 211.0,
+      "end": 218.5,
+      "screen": "Pivot \u00b7 Measures \u00b7 Add entry",
+      "whatHappens": "Add entry sheet: measurement chips scrolled, value, date (Today/Yesterday), note, Save entry."
+    },
+    {
+      "start": 218.5,
+      "end": 221.5,
+      "screen": "Pivot hub",
+      "whatHappens": "Back to hub, Calendar opened."
+    },
+    {
+      "start": 221.5,
+      "end": 231.5,
+      "screen": "Pivot \u00b7 Calendar month view",
+      "whatHappens": "Months scrolled back to Dec 2025 and forward again."
+    },
+    {
+      "start": 231.5,
+      "end": 233.5,
+      "screen": "Pivot \u00b7 Calendar day sheet",
+      "whatHappens": "Fri 28 Aug 2026 sheet: Core workout, Log another workout."
+    },
+    {
+      "start": 233.5,
+      "end": 238.0,
+      "screen": "Pivot \u00b7 workout detail",
+      "whatHappens": "Core workout detail. A system notification banner covers the top ~235\u2013237 s."
+    },
+    {
+      "start": 238.0,
+      "end": 243.0,
+      "screen": "Pivot \u00b7 Calendar",
+      "whatHappens": "Scroll back up to November."
+    },
+    {
+      "start": 243.0,
+      "end": 245.5,
+      "screen": "Pivot \u00b7 Calendar day sheet",
+      "whatHappens": "Thu 12 Nov 2026 rest day: Log workout for Thu 12 Nov."
+    },
+    {
+      "start": 245.5,
+      "end": 256.5,
+      "screen": "Pivot \u00b7 Log past workout",
+      "whatHappens": "Backfill form, Add exercise sheet, Suspender Arm Curl added, name 'Arms'."
+    },
+    {
+      "start": 256.5,
+      "end": 258.5,
+      "screen": "Pivot \u00b7 Calendar",
+      "whatHappens": "Back to month view."
+    },
+    {
+      "start": 258.5,
+      "end": 268.0,
+      "screen": "Pivot \u00b7 Calendar year view",
+      "whatHappens": "Heatmap; year and metric dropdowns (Sets/Volume/Duration)."
+    },
+    {
+      "start": 268.0,
+      "end": 270.0,
+      "screen": "Pivot hub",
+      "whatHappens": "Hub."
+    },
+    {
+      "start": 270.0,
+      "end": 273.0,
+      "screen": "Blueprint",
+      "whatHappens": "Blueprint tab."
+    },
+    {
+      "start": 273.0,
+      "end": 276.5,
+      "screen": "Coach",
+      "whatHappens": "Your program card, Programs/Routines switch, Featured carousel, All programs filters."
+    },
+    {
+      "start": 276.5,
+      "end": 279.5,
+      "screen": "Coach \u00b7 program page",
+      "whatHappens": "Push Pull Legs \u00d7 2 facts, description, equipment, how to progress, day routines."
+    },
+    {
+      "start": 279.5,
+      "end": 287.0,
+      "screen": "Coach \u00b7 routine page",
+      "whatHappens": "Push B: stats, muscles worked body map, exercises list, START ROUTINE / Save to My routines."
+    },
+    {
+      "start": 287.0,
+      "end": 291.0,
+      "screen": "Coach",
+      "whatHappens": "Back to program page, then Coach home."
+    },
+    {
+      "start": 291.0,
+      "end": 295.0,
+      "screen": "Coach \u00b7 Routines",
+      "whatHappens": "My routines (Full Body A), Create routine, category tiles, Gym routines list."
+    },
+    {
+      "start": 295.0,
+      "end": 298.0,
+      "screen": "Coach \u00b7 New routine",
+      "whatHappens": "New routine sheet: Routine name, Add exercises, Save & preview."
+    },
+    {
+      "start": 298.0,
+      "end": 308.5,
+      "screen": "Coach \u00b7 Routines",
+      "whatHappens": "At home category selected: Living Room Full Body, Home Dumbbell Upper, Home Legs and Core."
+    },
+    {
+      "start": 308.5,
+      "end": 310.0,
+      "screen": "Transition",
+      "whatHappens": "Blank frame, then Blueprint."
+    },
+    {
+      "start": 310.0,
+      "end": 328.0,
+      "screen": "Blueprint \u00b7 swap today's workout",
+      "whatHappens": "Sheet: Recharge, program days, my routines, generated for you, coach routine categories expanded/collapsed."
+    },
+    {
+      "start": 328.0,
+      "end": 331.5,
+      "screen": "Blueprint \u00b7 Recharge",
+      "whatHappens": "Recharge detail 'Take a break and come back refreshed.' with Take today off, then back."
+    },
+    {
+      "start": 331.5,
+      "end": 333.5,
+      "screen": "Blueprint",
+      "whatHappens": "Sheet closed."
+    },
+    {
+      "start": 333.5,
+      "end": 341.5,
+      "screen": "Blueprint \u00b7 exercise demo",
+      "whatHappens": "Barbell Bench Press info sheet: animation, how to perform, alternatives, target muscles 2D/3D, exercise info."
+    },
+    {
+      "start": 341.5,
+      "end": 343.0,
+      "screen": "Blueprint",
+      "whatHappens": "Sheet closed."
+    },
+    {
+      "start": 343.0,
+      "end": 347.0,
+      "screen": "Blueprint \u00b7 swap exercise",
+      "whatHappens": "Search exercises sheet with muscle filters; Dumbbell Decline Bench Press chosen; toast."
+    },
+    {
+      "start": 347.0,
+      "end": 353.6,
+      "screen": "Blueprint",
+      "whatHappens": "List scrolled showing SWAPPED badge and Finish workout."
+    }
+  ]
+}
