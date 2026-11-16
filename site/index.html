@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tensora: plan, log and see every muscle you train</title>
+<meta name="description" content="Tensora plans your training week, logs every set and maps the work onto a 3D body, so you can see which muscles are growing and which ones you skip. 823 exercises, 15 programs, 30 routines.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tensora: see every muscle you train">
+<meta property="og:description" content="A training planner that builds your week, logs your sets and shows how each muscle is developing.">
+<meta property="og:image" content="media/still-physique-3d.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4e44d4">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("tensora-theme");if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="64x64" href="brand/tensora-icon-64.png">
+<link rel="apple-touch-icon" href="brand/tensora-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No. Each phone gets its own account automatically, so you can start training straight after the four setup steps. There is no login screen."}},{"@type":"Question","name":"Does it work in a gym with no signal?","acceptedAnswer":{"@type":"Answer","text":"Yes. Workouts, measurements and photos are saved on the phone first and sent to the server with retries once you are back online."}},{"@type":"Question","name":"What happens if the app closes during a workout?","acceptedAnswer":{"@type":"Answer","text":"The workout in progress is saved continuously. Open the app again and it picks up where you left off, with every logged set in place."}},{"@type":"Question","name":"Do I need a full gym?","acceptedAnswer":{"@type":"Answer","text":"No. There are programs and routines for dumbbells only, bodyweight, resistance bands, suspension trainers and travel, as well as full gym setups."}},{"@type":"Question","name":"How is the muscle map percentage worked out?","acceptedAnswer":{"@type":"Answer","text":"Each muscle compares the training it got with ideal training over the same period. 100% means five hard sets, three times a week."}},{"@type":"Question","name":"Can I follow a program and still change a day?","acceptedAnswer":{"@type":"Answer","text":"Yes. You follow one program at a time, and swapping today\u2019s workout overrides that single day without changing the program."}},{"@type":"Question","name":"Can I add a workout I forgot to log?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the day in the Pivot calendar and choose Log workout to fill it in."}},{"@type":"Question","name":"Kilograms or pounds?","acceptedAnswer":{"@type":"Answer","text":"Either. Metric and imperial units work across the whole app."}}]}</script>
+<style>
+:root {
+  --bg: #f5f7f9; --surface: #ffffff; --raised: #eef1f5; --fill: #e9e7ff; --fill-strong: #4e44d4;
+  --ink: #0f172a; --text: #2c2f31; --muted: #5b6270; --line: #e3e7ee;
+  --primary: #4e44d4; --primary-hover: #4239c0; --on-primary: #ffffff;
+  --bezel: #0f172a; --focus: #4e44d4; --ok: #15803d; --err: #b42318;
+  --h-from: #000000; --h-to: #666666; --muted-word: rgba(15, 23, 42, 0.28);
+  --grid: rgba(78, 68, 212, 0.07); --grad-a: #4e44d4; --grad-b: #9895ff; --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06); --glow: 0 16px 40px -12px rgba(78, 68, 212, 0.45);
+  --s25: 2px; --s50: 4px; --s75: 8px; --s100: 12px; --s200: 16px; --s300: 24px; --s400: 32px; --s500: 40px; --s600: 48px; --s700: 64px; --s800: 80px; --s900: 96px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #181818; --surface: #1F1F1F; --raised: #272727; --fill: #272727; --fill-strong: #4e44d4;
+    --ink: #ffffff; --text: #e6e6e6; --muted: #a3a3a3; --line: #313131;
+    --primary: #8f88ff; --primary-hover: #a39dff; --on-primary: #0f0d2e; --bezel: #000000; --focus: #a39dff; --ok: #4ade80; --err: #f87171;
+    --h-from: #ffffff; --h-to: #9b9b9b; --muted-word: rgba(255, 255, 255, 0.28); color-scheme: dark;
+    --grid: rgba(152, 149, 255, 0.07); --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02); --glow: 0 16px 40px -12px rgba(102, 94, 240, 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #181818; --surface: #1F1F1F; --raised: #272727; --fill: #272727; --fill-strong: #4e44d4;
+  --ink: #ffffff; --text: #e6e6e6; --muted: #a3a3a3; --line: #313131;
+  --primary: #8f88ff; --primary-hover: #a39dff; --on-primary: #0f0d2e; --bezel: #000000; --focus: #a39dff; --ok: #4ade80; --err: #f87171;
+  --h-from: #ffffff; --h-to: #9b9b9b; --muted-word: rgba(255, 255, 255, 0.28); color-scheme: dark;
+  --grid: rgba(152, 149, 255, 0.07); --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02); --glow: 0 16px 40px -12px rgba(102, 94, 240, 0.5);
+}
+
+/* Named text styles (Tailwind scale steps only) */
+.heading-1 { font-size: 60px; line-height: 60px; font-weight: 600; letter-spacing: -0.02em; }
+.heading-2 { font-size: 48px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em; }
+.heading-3 { font-size: 36px; line-height: 40px; font-weight: 600; letter-spacing: -0.01em; }
+.heading-4 { font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }
+.heading-5 { font-size: 24px; line-height: 32px; font-weight: 600; }
+.title-2 { font-size: 18px; line-height: 28px; font-weight: 500; }
+.title-3 { font-size: 16px; line-height: 24px; font-weight: 500; }
+.title-4 { font-size: 14px; line-height: 20px; font-weight: 500; }
+.body-3 { font-size: 16px; line-height: 24px; font-weight: 400; }
+.body-5 { font-size: 14px; line-height: 20px; font-weight: 500; }
+.body-6 { font-size: 14px; line-height: 20px; font-weight: 400; }
+.button-md { font-size: 16px; line-height: 24px; font-weight: 600; }
+.button-sm { font-size: 14px; line-height: 20px; font-weight: 600; }
+.caption-2 { font-size: 14px; line-height: 20px; font-weight: 400; }
+.caption-3 { font-size: 12px; line-height: 16px; font-weight: 600; }
+.caption-4 { font-size: 12px; line-height: 16px; font-weight: 500; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--s900); }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+html { overflow-x: clip; }
+/* Blueprint grid behind the whole page (tensora.fit), stronger and fading out under the hero */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent); mask-image: linear-gradient(180deg, #000 45%, transparent); }
+.hero > .wrap { position: relative; }
+/* Blue cards in the app's indigo, with the white grid on top */
+.blue.blue { position: relative; overflow: hidden; color: #ffffff; background: linear-gradient(135deg, var(--grad-a), var(--grad-b)); border-color: transparent !important; box-shadow: var(--glow); }
+.blue::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 32px 32px; }
+.blue > * { position: relative; z-index: 1; }
+.blue h2, .blue h3, .blue .heading-5 { color: #ffffff; }
+.blue .muted, .blue p { color: rgba(255, 255, 255, 0.88); }
+.blue i { color: #ffffff !important; }
+.logo { display: block; height: 36px; width: auto; }
+/* The wordmark is deep indigo: in dark mode it sits on a small white plate so it stays readable */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; } }
+:root[data-theme="dark"] .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; }
+.band.blue.blue, .fill.blue.blue { position: absolute; }
+main, footer { overflow-x: clip; }
+h1, h2, h3, h4, p { margin: 0; text-wrap: balance; }
+p, li { text-wrap: pretty; }
+h1, h2, h3, h4 { color: var(--ink); }
+a { color: inherit; }
+.muted { color: var(--muted); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: var(--s200); top: var(--s200); z-index: 100; padding: var(--s75) var(--s100); border-radius: 8px; background: var(--primary); color: var(--on-primary); transform: translateY(-200%); transition: transform 300ms var(--ease); }
+.skip:focus { transform: none; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: 1152px; margin: 0 auto; padding: 0 var(--s300); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s75); padding: var(--s75) var(--s100); border-radius: 8px; border: 1px solid transparent; cursor: pointer; text-decoration: none; white-space: nowrap; font-family: inherit;
+  transition: transform 300ms var(--ease), background-color 300ms var(--ease), opacity 300ms var(--ease); }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.btn[aria-busy="true"] { opacity: 0.7; pointer-events: none; }
+
+/* Nav */
+.nav { position: fixed; top: var(--s200); left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: var(--s300); padding: var(--s75) var(--s75) var(--s75) var(--s200);
+  border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 78%, transparent); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
+.brand { display: flex; align-items: center; gap: var(--s75); text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: var(--s50); list-style: none; margin: 0; padding: 0; }
+.nav-links a { display: block; padding: var(--s75) var(--s100); border-radius: 8px; text-decoration: none; color: var(--muted); transition: color 300ms var(--ease), background-color 300ms var(--ease); }
+.nav-links a:hover { color: var(--ink); background: var(--raised); }
+.nav-links a[aria-current="true"] { color: var(--primary); background: var(--fill); }
+.theme-btn { position: relative; width: 40px; height: 40px; flex: none; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); cursor: pointer; font-size: 20px;
+  transition: background-color 300ms var(--ease), transform 300ms var(--ease); }
+.theme-btn:hover { background: var(--raised); }
+.theme-btn:active { transform: scale(0.96); }
+.theme-btn i { position: absolute; inset: 0; display: grid; place-items: center; transition: transform 500ms var(--ease), opacity 300ms var(--ease); }
+.theme-btn .ph-sun { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+:root[data-theme="dark"] .theme-btn .ph-moon { opacity: 0; transform: rotate(90deg) scale(0.6); }
+:root[data-theme="dark"] .theme-btn .ph-sun { opacity: 1; transform: none; }
+.menu-btn { display: none; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; cursor: pointer; position: relative; }
+.menu-btn span { position: absolute; left: 11px; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 500ms var(--ease), opacity 300ms var(--ease); }
+.menu-btn span:nth-child(1) { transform: translateY(-5px); }
+.menu-btn span:nth-child(3) { transform: translateY(5px); }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
+.sheet { position: fixed; inset: 0; z-index: 40; padding: var(--s900) var(--s300) var(--s300); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  opacity: 0; pointer-events: none; transition: opacity 500ms var(--ease); }
+.sheet.open { opacity: 1; pointer-events: auto; }
+.sheet ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s75); }
+.sheet a { display: block; padding: var(--s100) 0; text-decoration: none; color: var(--ink); }
+.sheet a.btn { display: flex; margin-top: var(--s200); padding: var(--s100) var(--s200); color: var(--on-primary); }
+.sheet li { opacity: 0; transform: translateY(24px); transition: transform 500ms var(--ease), opacity 500ms var(--ease); transition-delay: calc(var(--i) * 60ms); }
+.sheet.open li { opacity: 1; transform: none; }
+
+/* Hero */
+.hero { padding: 144px 0 var(--s900); position: relative; overflow: hidden; }
+.hero-copy { display: grid; justify-items: center; text-align: center; gap: var(--s300); }
+.hero h1 { max-width: 680px; background: linear-gradient(90deg, var(--h-from), var(--h-to)); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: var(--s50); }
+.hero .sub { max-width: 680px; }
+.pill { display: inline-flex; align-items: center; gap: var(--s75); padding: var(--s50) var(--s100); border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); }
+.pill i { color: var(--primary); }
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s75); width: 100%; max-width: 440px; padding: var(--s75); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+.signup input { min-width: 0; border: 0; background: transparent; color: var(--ink); padding: var(--s75) var(--s100); border-radius: 4px; font-family: inherit; }
+.signup input:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+.signup input[aria-invalid="true"] { outline: 2px solid var(--err); outline-offset: 0; }
+.signup .btn { border-radius: 4px; }
+.form-msg { grid-column: 1 / -1; min-height: 0; padding: 0 var(--s100); text-align: left; }
+.form-msg:empty { display: none; }
+.form-msg.err { color: var(--err); }
+.form-msg.ok { color: var(--ok); }
+.proof { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s75) var(--s400); margin-top: var(--s75); list-style: none; padding: 0; }
+.proof li { display: flex; align-items: baseline; gap: var(--s75); }
+.proof strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+.stage { position: relative; margin-top: var(--s700); height: 600px; display: flex; justify-content: center; align-items: flex-start; }
+.band { position: absolute; top: 160px; height: 280px; width: 50%; transform: scaleX(0); transition: transform 1100ms var(--ease) 200ms; }
+.band.l { left: 0; transform-origin: left; border-radius: 0 8px 8px 0; }
+.band.r { right: 0; transform-origin: right; border-radius: 8px 0 0 8px; }
+.hero.in .band { transform: scaleX(1); }
+.phone { margin: 0; padding: var(--s75); border-radius: 24px; background: var(--bezel); box-shadow: 0 24px 48px -24px rgba(15, 23, 42, 0.45); flex: none; }
+.phone .screen { border-radius: 16px; overflow: hidden; aspect-ratio: 480 / 1028; background: #fff; }
+.phone video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.phone-main { width: 264px; position: relative; z-index: 3; opacity: 0; transform: translateY(48px); transition: transform 900ms var(--ease) 100ms, opacity 900ms var(--ease) 100ms; }
+.phone-side { width: 216px; margin-top: var(--s700); position: relative; z-index: 2; opacity: 0; transition: transform 1100ms var(--ease) 450ms, opacity 900ms var(--ease) 450ms; }
+.stage .side-l { transform: translateX(-160px) rotate(-6deg); margin-right: -24px; }
+.stage .side-r { transform: translateX(160px) rotate(6deg); margin-left: -24px; }
+.hero.in .phone-main { opacity: 1; transform: none; }
+.hero.in .stage .side-l { opacity: 1; transform: rotate(-4deg); }
+.hero.in .stage .side-r { opacity: 1; transform: rotate(4deg); }
+.hero-copy > * { opacity: 0; transform: translateY(24px); transition: transform 800ms var(--ease), opacity 800ms var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+.hero.in .hero-copy > * { opacity: 1; transform: none; }
+
+/* Tabs strip */
+.tabs-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s100); margin-top: var(--s700); }
+.tabs-strip a { display: grid; gap: var(--s50); padding: var(--s200); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); text-decoration: none;
+  opacity: 0; transform: translateX(var(--from, 0)); transition: transform 800ms var(--ease), opacity 800ms var(--ease), background-color 300ms var(--ease); transition-delay: calc(var(--i) * 70ms); }
+.tabs-strip a:hover { background: var(--raised); }
+.tabs-strip a i { font-size: 24px; color: var(--primary); }
+.tabs-strip.in a { opacity: 1; transform: none; }
+
+/* Problem / solution */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s300); }
+.card { padding: var(--s400); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); display: grid; gap: var(--s200); align-content: start; }
+.card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s100); }
+.card li { display: flex; gap: var(--s100); }
+.card li i { font-size: 20px; flex: none; margin-top: var(--s25); }
+.card .no i { color: var(--muted); }
+.card .yes i { color: var(--primary); }
+.slide-l, .slide-r { opacity: 0; transition: transform 900ms var(--ease), opacity 900ms var(--ease); }
+.slide-l { transform: translateX(-64px); }
+.slide-r { transform: translateX(64px); }
+.in .slide-l, .in .slide-r, .slide-l.in, .slide-r.in { opacity: 1; transform: none; }
+
+section { padding: var(--s900) 0; }
+.section-head { display: grid; gap: var(--s200); justify-items: center; text-align: center; max-width: 680px; margin: 0 auto var(--s700); }
+
+/* Chapters */
+.chapter-head { display: grid; justify-items: center; text-align: center; gap: var(--s200); max-width: 720px; margin: 0 auto var(--s800); }
+.rule { display: flex; align-items: center; width: 100%; max-width: 520px; gap: var(--s100); margin-bottom: var(--s100); }
+.rule .half { flex: 1; height: 2px; border-radius: 2px; background: var(--primary); transform: scaleX(0); transition: transform 900ms var(--ease); }
+.rule .half.l { transform-origin: left; }
+.rule .half.r { transform-origin: right; }
+.rule .badge { width: 48px; height: 48px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--grad-a), var(--grad-b)); box-shadow: var(--glow); color: #fff; font-size: 24px; transform: scale(0.6); opacity: 0; transition: transform 700ms var(--ease) 500ms, opacity 500ms var(--ease) 500ms; }
+.chapter-head.in .half { transform: scaleX(1); }
+.chapter-head.in .badge { transform: none; opacity: 1; }
+.chapter-head > :not(.rule) { opacity: 0; transform: translateY(32px); transition: transform 800ms var(--ease) 300ms, opacity 800ms var(--ease) 300ms; }
+.chapter-head.in > :not(.rule) { opacity: 1; transform: none; }
+.lead { max-width: 600px; }
+
+.feat { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--s700); margin-bottom: var(--s900); }
+.feat[data-side="right"] .feat-media { order: 2; }
+.feat-media { position: relative; display: flex; justify-content: center; padding: var(--s600) 0; }
+.feat .fill { position: absolute; inset: var(--s900) 0; border-radius: 8px; transform: scaleX(0); transition: transform 1000ms var(--ease); }
+.feat[data-side="left"] .fill { transform-origin: left; }
+.feat[data-side="right"] .fill { transform-origin: right; }
+.feat .phone { width: 264px; position: relative; opacity: 0; transition: transform 1000ms var(--ease) 250ms, opacity 800ms var(--ease) 250ms; }
+.feat[data-side="left"] .phone { transform: translateX(-120px) rotate(-4deg); }
+.feat[data-side="right"] .phone { transform: translateX(120px) rotate(4deg); }
+.feat-copy { display: grid; gap: var(--s200); opacity: 0; transition: transform 1000ms var(--ease) 350ms, opacity 800ms var(--ease) 350ms; }
+.feat[data-side="left"] .feat-copy { transform: translateX(96px); }
+.feat[data-side="right"] .feat-copy { transform: translateX(-96px); }
+.feat.in .fill { transform: scaleX(1); }
+.feat.in .phone, .feat.in .feat-copy { opacity: 1; transform: none; }
+.ticks { list-style: none; margin: var(--s75) 0 0; padding: 0; display: grid; gap: var(--s100); }
+.ticks li { display: flex; gap: var(--s100); align-items: flex-start; color: var(--text); opacity: 0; transform: translateX(24px); transition: transform 600ms var(--ease), opacity 600ms var(--ease); transition-delay: calc(700ms + var(--i) * 90ms); }
+.feat[data-side="right"] .ticks li { transform: translateX(-24px); }
+.feat.in .ticks li { opacity: 1; transform: none; }
+.ticks i { color: var(--primary); font-size: 20px; flex: none; }
+
+.minis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s300); }
+.mini { display: grid; gap: var(--s100); justify-items: center; text-align: center; padding: var(--s300); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow);
+  opacity: 0; transition: transform 900ms var(--ease), opacity 800ms var(--ease); transition-delay: calc(var(--i) * 110ms); }
+.mini[data-from="left"] { transform: translateX(-72px); }
+.mini[data-from="right"] { transform: translateX(72px); }
+.minis.in .mini { opacity: 1; transform: none; }
+.phone-sm { width: 176px; margin-bottom: var(--s100); }
+.mini h4 { color: var(--ink); }
+
+/* Tagline reveal */
+.tagline { padding: var(--s900) 0 128px; }
+.tagline p { max-width: 880px; margin: 0 auto; text-align: center; }
+.tagline .w { color: var(--muted-word); transition: color 500ms var(--ease); }
+.tagline .w.on { color: var(--ink); }
+
+/* Also inside */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s300); }
+.tile { padding: var(--s300); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); display: grid; gap: var(--s100); align-content: start;
+  opacity: 0; transition: transform 900ms var(--ease), opacity 800ms var(--ease), background-color 300ms var(--ease); transition-delay: calc(var(--i) * 80ms); }
+.tile[data-from="left"] { transform: translateX(-64px); }
+.tile[data-from="right"] { transform: translateX(64px); }
+.tiles.in .tile { opacity: 1; transform: none; }
+.tile-icon { width: 40px; height: 40px; display: grid; place-items: center; background: var(--fill); color: var(--primary); font-size: 20px; margin-bottom: var(--s75); border-radius: 6px; }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s300); counter-reset: s; position: relative; }
+.step { padding: var(--s300); border-radius: 8px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); display: grid; gap: var(--s100); align-content: start; }
+.step .n { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--grad-a), var(--grad-b)); color: #fff; margin-bottom: var(--s75); }
+.steps .step { opacity: 0; transform: translateY(32px); transition: transform 800ms var(--ease), opacity 800ms var(--ease); }
+.steps .step:nth-child(2) { transition-delay: 120ms; }
+.steps .step:nth-child(3) { transition-delay: 240ms; }
+.steps.in .step { opacity: 1; transform: none; }
+
+/* Vision */
+.vision { display: grid; justify-items: center; text-align: center; gap: var(--s200); padding: var(--s800) var(--s400); border-radius: 8px; }
+.vision h2 { max-width: 680px; }
+.vision p.body-3 { max-width: 680px; }
+.vision .eyebrow { color: rgba(255, 255, 255, 0.88); }
+.vision-icon { width: 48px; height: 48px; border-radius: 8px; display: grid; place-items: center; font-size: 24px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.28); margin-bottom: var(--s75); }
+
+/* FAQ */
+.faq { max-width: 760px; margin: 0 auto; display: grid; gap: var(--s100); }
+.qa { border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+.qa summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--s200); padding: var(--s200) var(--s300); color: var(--ink); border-radius: 8px; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary i { color: var(--primary); transition: transform 500ms var(--ease); flex: none; }
+.qa[open] summary i { transform: rotate(45deg); }
+.qa p { padding: 0 var(--s300) var(--s300); }
+
+/* Final CTA */
+.final { text-align: center; display: grid; justify-items: center; gap: var(--s300); padding: var(--s800) var(--s300); border-radius: 8px; }
+.final .signup { border-color: transparent; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18); }
+.final .form-msg.ok, .final .form-msg.err { color: var(--ink); }
+.final .signup i { color: inherit !important; }
+.final h2 { max-width: 680px; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s300); max-width: 880px; margin: 0 auto; }
+.contact-card { display: flex; align-items: center; gap: var(--s200); padding: var(--s300); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--text);
+  transition: transform 900ms var(--ease), opacity 900ms var(--ease), background-color 300ms var(--ease); }
+.contact-card:hover { background: var(--raised); }
+.contact-card:active { transform: scale(0.98); }
+.contact-card .tile-icon { margin: 0; flex: none; width: 48px; height: 48px; border-radius: 8px; font-size: 24px; }
+.contact-card .grow { display: grid; gap: var(--s25); min-width: 0; }
+.contact-card .grow span:last-child { color: var(--ink); overflow-wrap: break-word; }
+.contact-card > .ph-arrow-up-right { margin-left: auto; color: var(--primary); font-size: 20px; flex: none; transition: transform 300ms var(--ease); }
+.contact-card:hover > .ph-arrow-up-right { transform: translate(2px, -2px); }
+
+footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s200); align-items: center; }
+.foot ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s100) var(--s300); margin: 0; padding: 0; }
+.foot a { text-decoration: none; color: var(--muted); transition: color 300ms var(--ease); }
+.foot a:hover { color: var(--ink); }
+
+/* Generic reveal */
+[data-reveal] { opacity: 0; transform: translateY(32px); transition: transform 700ms var(--ease), opacity 700ms var(--ease); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+@media (max-width: 960px) {
+  .nav-links, .nav .btn { display: none; }
+  .menu-btn { display: block; }
+  .nav { gap: var(--s200); }
+  .feat { grid-template-columns: 1fr; gap: var(--s300); margin-bottom: var(--s800); }
+  .feat[data-side="right"] .feat-media { order: 0; }
+  .feat-copy { text-align: left; }
+  .tabs-strip { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .tiles, .minis { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 var(--s200); }
+  .heading-1 { font-size: 36px; line-height: 40px; }
+  .heading-2 { font-size: 30px; line-height: 36px; }
+  .heading-4 { font-size: 24px; line-height: 32px; }
+  section { padding: var(--s800) 0; }
+  .hero { padding-top: 112px; padding-bottom: var(--s700); }
+  .stage { height: 460px; margin-top: var(--s600); }
+  .band { top: 120px; height: 220px; }
+  .phone-main { width: 200px; }
+  .phone-side { width: 150px; margin-top: var(--s600); }
+  .stage .side-l { margin-right: -48px; }
+  .stage .side-r { margin-left: -48px; }
+  .feat .phone { width: 216px; }
+  .tabs-strip { grid-template-columns: 1fr 1fr; }
+  .tabs-strip a:last-child { grid-column: 1 / -1; }
+  .split, .tiles, .steps, .contact, .minis { grid-template-columns: 1fr; }
+  .signup { grid-template-columns: 1fr; }
+  .hero .sub br { display: none; }
+  .vision { padding: var(--s600) var(--s200); }
+  .vision br { display: none; }
+  .card { padding: var(--s300); }
+  .final { padding: var(--s600) var(--s200); }
+  .contact-card { padding: var(--s200); gap: var(--s100); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-property: opacity, color, background-color !important; transition-duration: 300ms !important; transition-delay: 0ms !important; }
+  .band, .fill, .rule .half { transform: none !important; }
+  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
+  .stage .side-l { transform: rotate(-4deg) !important; }
+  .stage .side-r { transform: rotate(4deg) !important; }
+  .tagline .w { color: var(--ink); }
+}
+</style>
+</head>
+<body>
+<a class="skip button-sm" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Tensora home"><img class="logo" src="brand/tensora-logo.webp" alt="Tensora" width="109" height="36"></a>
+  <ul class="nav-links title-4">
+    <li><a href="#plan">Plan</a></li>
+    <li><a href="#train">Train</a></li>
+    <li><a href="#physique">Physique</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#coach">Coach</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="btn btn-primary button-sm" href="#get">Get early access</a>
+  <button class="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false"><i class="ph ph-moon" aria-hidden="true"></i><i class="ph ph-sun" aria-hidden="true"></i></button>
+  <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span></span></button>
+</nav>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <ul class="heading-5">
+    <li style="--i:0"><a href="#plan">Plan</a></li>
+    <li style="--i:1"><a href="#train">Train</a></li>
+    <li style="--i:2"><a href="#physique">Physique</a></li>
+    <li style="--i:3"><a href="#history">History</a></li>
+    <li style="--i:4"><a href="#coach">Coach</a></li>
+    <li style="--i:5"><a href="#faq">FAQ</a></li>
+    <li style="--i:6"><a href="#contact">Contact</a></li>
+    <li style="--i:7"><a class="btn btn-primary button-md" href="#get">Get early access</a></li>
+  </ul>
+</div>
+
+<main id="main">
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="pill caption-4" style="--i:0"><i class="ph ph-sparkle" aria-hidden="true"></i>Training planner for Android and iOS</span>
+        <h1 class="heading-1" style="--i:1">Train for the body<br>you are building</h1>
+        <p class="sub body-3 muted" style="--i:2">Tensora plans your week, logs every set and paints the work onto a 3D body, <br>so you can see which muscles are growing and which ones you skip.</p>
+        <div id="get" style="--i:3; width:100%; display:grid; justify-items:center">
+      <form class="signup" novalidate data-signup>
+        <label class="sr-only" for="email-top">Email address</label>
+        <input id="email-top" class="body-3" type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-top-msg">
+        <button class="btn btn-primary button-md" type="submit"><span>Get early access</span><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        <p id="email-top-msg" class="caption-2 form-msg" role="status" aria-live="polite"></p>
+      </form></div>
+        <ul class="proof body-6 muted" style="--i:4" aria-label="What is inside">
+          <li><strong class="title-3" data-count="823">823</strong>exercises</li>
+          <li><strong class="title-3" data-count="15">15</strong>programs</li>
+          <li><strong class="title-3" data-count="30">30</strong>routines</li>
+          <li><strong class="title-3" data-count="16">16</strong>body measurements</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <span class="band l blue" aria-hidden="true"></span><span class="band r blue" aria-hidden="true"></span>
+        <figure class="phone phone-side side-l"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-3d" poster="media/physique-3d.jpg?v=4" aria-label="3D muscle map rotating"><source src="media/physique-3d.webm?v=4" type="video/webm"><source src="media/physique-3d.mp4?v=4" type="video/mp4"></video></div></figure>
+        <figure class="phone phone-main"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-today" poster="media/blueprint-today.jpg?v=4" aria-label="Today’s planned session"><source src="media/blueprint-today.webm?v=4" type="video/webm"><source src="media/blueprint-today.mp4?v=4" type="video/mp4"></video></div></figure>
+        <figure class="phone phone-side side-r"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-calendar-month" poster="media/pivot-calendar-month.jpg?v=4" aria-label="Training calendar with streaks"><source src="media/pivot-calendar-month.webm?v=4" type="video/webm"><source src="media/pivot-calendar-month.mp4?v=4" type="video/mp4"></video></div></figure>
+      </div>
+      <nav class="tabs-strip" aria-label="App tabs">
+        <a href="#plan" style="--i:0; --from:-48px"><i class="ph ph-calendar-check" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Blueprint</span><span class="caption-2 muted">Today&rsquo;s plan</span></a>
+        <a href="#train" style="--i:1; --from:-24px"><i class="ph ph-barbell" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Grind</span><span class="caption-2 muted">Live logging</span></a>
+        <a href="#physique" style="--i:2; --from:0px"><i class="ph ph-person-simple" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Physique</span><span class="caption-2 muted">Muscle map</span></a>
+        <a href="#history" style="--i:3; --from:24px"><i class="ph ph-chart-bar" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Pivot</span><span class="caption-2 muted">History and stats</span></a>
+        <a href="#coach" style="--i:4; --from:48px"><i class="ph ph-clipboard-text" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Coach</span><span class="caption-2 muted">Programs</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">Why Tensora</p>
+        <h2 id="why-title" class="heading-2">A log tells you what you lifted. Tensora tells you what it built.</h2>
+      </div>
+      <div class="split" data-group>
+        <article class="card slide-l">
+          <h3 class="heading-5">Most workout logs</h3>
+          <ul class="body-3 no">
+            <li><i class="ph ph-minus-circle" aria-hidden="true"></i><span>Leave you to decide what to train today</span></li>
+            <li><i class="ph ph-minus-circle" aria-hidden="true"></i><span>Show rows of numbers, not muscles</span></li>
+            <li><i class="ph ph-minus-circle" aria-hidden="true"></i><span>Lose the session when the app closes</span></li>
+            <li><i class="ph ph-minus-circle" aria-hidden="true"></i><span>Never tell you which muscle is falling behind</span></li>
+          </ul>
+        </article>
+        <article class="card blue slide-r">
+          <h3 class="heading-5">Tensora</h3>
+          <ul class="body-3 yes">
+            <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><span>Builds your week from your body, goal and schedule</span></li>
+            <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><span>Maps every set onto a 2D and 3D body</span></li>
+            <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><span>Saves the workout as you go and syncs when online</span></li>
+            <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><span>Shows recovery and balance, so you know where to aim</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+  <section class="chapter" id="plan" aria-labelledby="plan-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-calendar-check"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">01 · Blueprint</p>
+      <h2 id="plan-title" class="heading-2">A week planned around you</h2>
+      <p class="body-3 muted lead">Tensora builds your training week from your height, weight, goal, experience, days per week and session length. Open the app and today is already laid out.</p>
+    </header>
+    
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-today" poster="media/blueprint-today.jpg?v=4" aria-label="Today, ready when you are"><source src="media/blueprint-today.webm?v=4" type="video/webm"><source src="media/blueprint-today.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Blueprint · 01</p>
+        <h3 class="heading-4">Today, ready when you are</h3>
+        <p class="body-3 muted">Today’s session card shows where the workout came from, how long it takes and which regions it trains. Your weekly volume target sits right underneath, so you always know how far into the week you are.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Session length, exercise count and total sets at a glance</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A source chip for program, routine or generated sessions</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weekly sets against your target, with the top muscles</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-day" poster="media/blueprint-swap-day.jpg?v=4" aria-label="Change the whole day in one sheet"><source src="media/blueprint-swap-day.webm?v=4" type="video/webm"><source src="media/blueprint-swap-day.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Blueprint · 01</p>
+        <h3 class="heading-4">Change the whole day in one sheet</h3>
+        <p class="body-3 muted">Not feeling push day? Swap today for a rest day, another day of your program, one of your own routines, a generated session or any routine from the Coach library.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Recharge turns today into a rest day</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Coach routines grouped in eight categories, with search</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>The swap lasts for today and survives an app restart</span></li></ul>
+      </div>
+    </article>
+    
+  </section>
+  <section class="chapter" id="train" aria-labelledby="train-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-barbell"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">02 · Grind</p>
+      <h2 id="train-title" class="heading-2">Log sets without breaking focus</h2>
+      <p class="body-3 muted lead">Grind is the live workout screen. Big steppers, a rest timer that starts on its own and instructions one scroll away.</p>
+    </header>
+    
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-log-set" poster="media/grind-log-set.jpg?v=4" aria-label="Log a set in a few taps"><source src="media/grind-log-set.webm?v=4" type="video/webm"><source src="media/grind-log-set.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Grind · 02</p>
+        <h3 class="heading-4">Log a set in a few taps</h3>
+        <p class="body-3 muted">Pick the set type, step the weight and reps, tap Log set. The rest timer starts straight away and the set lands in the list below.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Working, warm up, drop and failure sets</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight in kilograms or pounds, reps and optional effort</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Every exercise keeps its own timer, so your workout time stays honest</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-how-to" poster="media/grind-how-to.jpg?v=4" aria-label="Form cues and alternatives on the same screen"><source src="media/grind-how-to.webm?v=4" type="video/webm"><source src="media/grind-how-to.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Grind · 02</p>
+        <h3 class="heading-4">Form cues and alternatives on the same screen</h3>
+        <p class="body-3 muted">Each exercise has numbered steps and a carousel of alternatives that hit the same muscle with other equipment. Bench taken? Swap to the cable version and keep going.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Step by step “How to perform” instructions</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Alternatives for the same muscle and movement</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Target muscles shown on the body</span></li></ul>
+      </div>
+    </article>
+    
+  </section>
+  <section class="chapter" id="physique" aria-labelledby="physique-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-person-simple"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">03 · Physique</p>
+      <h2 id="physique-title" class="heading-2">See where your training actually lands</h2>
+      <p class="body-3 muted lead">Every working set is mapped onto the muscles it trains. Turn the body in 3D, switch the period and see what is growing and what is falling behind.</p>
+    </header>
+    
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-3d" poster="media/physique-3d.jpg?v=4" aria-label="A muscle map you can turn in your hand"><source src="media/physique-3d.webm?v=4" type="video/webm"><source src="media/physique-3d.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Physique · 03</p>
+        <h3 class="heading-4">A muscle map you can turn in your hand</h3>
+        <p class="body-3 muted">Body distribution colours each muscle by the training it got against ideal training over the same period. Drag to rotate the full 3D model, or flip to the 2D front and back view.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>2D or 3D, front and back</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>100% means five hard sets, three times a week</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Last week, last month or last year</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-recovery" poster="media/physique-recovery.jpg?v=4" aria-label="Know what is ready to train"><source src="media/physique-recovery.webm?v=4" type="video/webm"><source src="media/physique-recovery.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Physique · 03</p>
+        <h3 class="heading-4">Know what is ready to train</h3>
+        <p class="body-3 muted">The recovery estimate colours the body by how rested each muscle is and suggests what to train today instead.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Under 50%, recovering and ready states</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap a muscle or a row for its estimate</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A tip card names the muscles that are ready</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-strength" poster="media/physique-strength.jpg?v=4" aria-label="Strength and records from your own logs"><source src="media/physique-strength.webm?v=4" type="video/webm"><source src="media/physique-strength.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Physique · 03</p>
+        <h3 class="heading-4">Strength and records from your own logs</h3>
+        <p class="body-3 muted">Below the map, a per muscle recovery list leads into Performance: a strength score with a running sparkline, weekly volume bars and a wall of records by body region.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Ready in times for muscles still recovering</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weekly volume bars</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A PR wall grouped by body region</span></li></ul>
+      </div>
+    </article>
+    
+  </section>
+  <section class="chapter" id="history" aria-labelledby="history-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-chart-bar"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">04 · Pivot</p>
+      <h2 id="history-title" class="heading-2">Every workout, every number, every streak</h2>
+      <p class="body-3 muted lead">Pivot is your training history. Charts, calendars, measurements and the full detail of every session you have logged.</p>
+    </header>
+    
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-training-chart" poster="media/pivot-training-chart.jpg?v=4" aria-label="One chart, three ways to read it"><source src="media/pivot-training-chart.webm?v=4" type="video/webm"><source src="media/pivot-training-chart.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Pivot · 04</p>
+        <h3 class="heading-4">One chart, three ways to read it</h3>
+        <p class="body-3 muted">The Training card switches between duration, volume and reps, for this week, this month or this year, with the change against the previous period.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Duration, volume or reps</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Week, month or year</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A monthly summary of workouts, volume and streak</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-workout-detail" poster="media/pivot-workout-detail.jpg?v=4" aria-label="The full story of each session"><source src="media/pivot-workout-detail.webm?v=4" type="video/webm"><source src="media/pivot-workout-detail.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Pivot · 04</p>
+        <h3 class="heading-4">The full story of each session</h3>
+        <p class="body-3 muted">Open any workout to see its time, volume, sets and reps, a muscle mix bar, and every set with its estimated one rep max and record badges.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Estimated one rep max on every set</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight, one rep max and volume record badges</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Jump to the previous or next workout</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-calendar-month" poster="media/pivot-calendar-month.jpg?v=4" aria-label="A calendar that keeps you honest"><source src="media/pivot-calendar-month.webm?v=4" type="video/webm"><source src="media/pivot-calendar-month.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Pivot · 04</p>
+        <h3 class="heading-4">A calendar that keeps you honest</h3>
+        <p class="body-3 muted">Training days are marked with a flame and joined by streak bars. Scroll back through months and see exactly how consistent you have been.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Week streaks and runs within the month</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Days and sessions per month</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap a day to open its workouts</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-measures" poster="media/pivot-measures.jpg?v=4" aria-label="Measurements beyond body weight"><source src="media/pivot-measures.webm?v=4" type="video/webm"><source src="media/pivot-measures.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Pivot · 04</p>
+        <h3 class="heading-4">Measurements beyond body weight</h3>
+        <p class="body-3 muted">Track 16 kinds of measurement, from body weight and body fat to neck, chest and arm circumferences, each with its own trend chart and history.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A trend chart with a change pill</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap an entry to edit it</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight and height stay in sync with your profile</span></li></ul>
+      </div>
+    </article>
+    
+  </section>
+  <section class="chapter" id="coach" aria-labelledby="coach-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-clipboard-text"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">05 · Coach</p>
+      <h2 id="coach-title" class="heading-2">Programs when you want structure</h2>
+      <p class="body-3 muted lead">Fifteen programs and thirty standalone routines, for the gym, for dumbbells only, for bodyweight, bands, suspension trainers and hotel rooms.</p>
+    </header>
+    
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="coach-program" poster="media/coach-program.jpg?v=4" aria-label="Programs for every level and setup"><source src="media/coach-program.webm?v=4" type="video/webm"><source src="media/coach-program.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Coach · 05</p>
+        <h3 class="heading-4">Programs for every level and setup</h3>
+        <p class="body-3 muted">Browse fifteen programs, from Starter Full Body to Upper / Lower Hypertrophy. Each one shows its day routines and how to progress. Follow one and its days land on your training week, and Blueprint and Grind follow along.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Filters for goal, level, days per week and equipment</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Day routines with time and muscles worked</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Follow a program and Coach tracks the week for you</span></li></ul>
+      </div>
+    </article>
+    <article class="feat" data-side="right">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="coach-routine" poster="media/coach-routine.jpg?v=4" aria-label="Routines you can read before you start"><source src="media/coach-routine.webm?v=4" type="video/webm"><source src="media/coach-routine.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Coach · 05</p>
+        <h3 class="heading-4">Routines you can read before you start</h3>
+        <p class="body-3 muted">Each routine shows its time, exercise and set counts, a body map of the muscles it works, the equipment it needs and every exercise with sets, reps and rest.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Muscles worked on a front and back body map</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Supersets grouped together</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Start it now or save it to My routines</span></li></ul>
+      </div>
+    </article>
+    
+  </section></div>
+
+  <section id="more" aria-labelledby="more-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">More in the app</p>
+        <h2 id="more-title" class="heading-2">Small screens that save you time</h2>
+      </div>
+      <div class="minis" data-count="4">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-stats-calendar" poster="media/pivot-stats-calendar.jpg?v=4" aria-label="Balance radar and streaks"><source src="media/pivot-stats-calendar.webm?v=4" type="video/webm"><source src="media/pivot-stats-calendar.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Balance radar and streaks</h4>
+        <p class="body-6 muted">A hexagon radar shows how balanced your physique work is, next to the streak calendar.</p>
+      </article>
+      <article class="mini" style="--i:1" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-exercise-detail" poster="media/pivot-exercise-detail.jpg?v=4" aria-label="Exercise pages"><source src="media/pivot-exercise-detail.webm?v=4" type="video/webm"><source src="media/pivot-exercise-detail.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Exercise pages</h4>
+        <p class="body-6 muted">Progress charts, full history and how to notes for every exercise you have done.</p>
+      </article>
+      <article class="mini" style="--i:2" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-log-past-workout" poster="media/pivot-log-past-workout.jpg?v=4" aria-label="Log a workout you forgot"><source src="media/pivot-log-past-workout.webm?v=4" type="video/webm"><source src="media/pivot-log-past-workout.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Log a workout you forgot</h4>
+        <p class="body-6 muted">Tap any past day and fill in the session you did not record at the time.</p>
+      </article>
+      <article class="mini" style="--i:3" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-year-heatmap" poster="media/pivot-year-heatmap.jpg?v=4" aria-label="A year at a glance"><source src="media/pivot-year-heatmap.webm?v=4" type="video/webm"><source src="media/pivot-year-heatmap.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">A year at a glance</h4>
+        <p class="body-6 muted">Twelve monthly heatmaps shaded by sets, volume or duration.</p>
+      </article></div>
+    </div>
+  </section>
+
+  <section class="tagline" aria-label="What Tensora is for">
+    <div class="wrap"><p class="heading-2" data-tagline><span class="w">Every</span> <span class="w">set</span> <span class="w">you</span> <span class="w">log</span> <span class="w">lands</span> <span class="w">on</span> <span class="w">a</span> <span class="w">muscle</span> <span class="w">you</span> <span class="w">can</span> <span class="w">see.</span> <span class="w">Every</span> <span class="w">week</span> <span class="w">shows</span> <span class="w">you</span> <span class="w">where</span> <span class="w">to</span> <span class="w">aim</span> <span class="w">next.</span></p></div>
+  </section>
+
+  <section aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">How it works</p>
+        <h2 id="how-title" class="heading-2">From first open to first map in three steps</h2>
+      </div>
+      <div class="steps" data-group>
+        <article class="step"><span class="n title-3">1</span><h3 class="heading-5">Tell it about you</h3><p class="body-3 muted">Height, weight, your goal and how often you can train. Four short steps, no account to create.</p></article>
+        <article class="step"><span class="n title-3">2</span><h3 class="heading-5">Train today&rsquo;s plan</h3><p class="body-3 muted">Open Tensora, start the session and log each set in Grind with a rest timer running for you.</p></article>
+        <article class="step"><span class="n title-3">3</span><h3 class="heading-5">Watch the map fill in</h3><p class="body-3 muted">Physique and Pivot turn your sets into a muscle map, recovery estimates, charts and streaks.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="also-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">Also inside</p>
+        <h2 id="also-title" class="heading-2">The details that keep you logging</h2>
+      </div>
+      <div class="tiles" data-group>
+      <article class="tile" data-from="left" style="--i:0">
+        <span class="tile-icon"><i class="ph ph-ruler" aria-hidden="true"></i></span>
+        <h3 class="title-2">Set up in four steps</h3>
+        <p class="body-6 muted">Height and weight on ruler pickers, your goal (Aesthetic, Athletic or Powerlifter), your training setup and an optional baseline photo.</p>
+      </article>
+      <article class="tile" data-from="right" style="--i:1">
+        <span class="tile-icon"><i class="ph ph-camera" aria-hidden="true"></i></span>
+        <h3 class="title-2">A proper workout summary</h3>
+        <p class="body-6 muted">Name the session, see duration, volume and sets, add photos from the camera or library and choose who can see it.</p>
+      </article>
+      <article class="tile" data-from="left" style="--i:2">
+        <span class="tile-icon"><i class="ph ph-cloud-check" aria-hidden="true"></i></span>
+        <h3 class="title-2">Works without signal</h3>
+        <p class="body-6 muted">Workouts, measurements and photos save on the phone first and sync when you are back online.</p>
+      </article>
+      <article class="tile" data-from="right" style="--i:3">
+        <span class="tile-icon"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i></span>
+        <h3 class="title-2">Nothing lost mid workout</h3>
+        <p class="body-6 muted">The workout in progress is saved as you go and restored if the app is closed.</p>
+      </article>
+      <article class="tile" data-from="left" style="--i:4">
+        <span class="tile-icon"><i class="ph ph-moon" aria-hidden="true"></i></span>
+        <h3 class="title-2">Light and dark</h3>
+        <p class="body-6 muted">Follow the phone or pick a theme. Contrast is checked on every screen.</p>
+      </article>
+      <article class="tile" data-from="right" style="--i:5">
+        <span class="tile-icon"><i class="ph ph-scales" aria-hidden="true"></i></span>
+        <h3 class="title-2">Metric or imperial</h3>
+        <p class="body-6 muted">Kilograms or pounds, centimetres or inches, everywhere in the app.</p>
+      </article></div>
+    </div>
+  </section>
+
+  <section id="vision" aria-labelledby="vision-title">
+    <div class="wrap">
+      <div class="vision blue" data-reveal>
+        <span class="vision-icon"><i class="ph ph-globe-hemisphere-east" aria-hidden="true"></i></span>
+        <p class="caption-3 eyebrow">Our vision</p>
+        <h2 id="vision-title" class="heading-3">Accessible, AI powered fitness <br>for everyone in the world</h2>
+        <p class="body-3 muted">That is the vision of Tensora. Tensora is the app that makes it practical: a plan built around you, a log that keeps up in the gym, and a body map that shows what your training is building.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">FAQ</p>
+        <h2 id="faq-title" class="heading-2">Questions before you start</h2>
+      </div>
+      <div class="faq" data-reveal>
+      <details class="qa"><summary class="title-2"><span>Do I need to create an account?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">No. Each phone gets its own account automatically, so you can start training straight after the four setup steps. There is no login screen.</p></details>
+      <details class="qa"><summary class="title-2"><span>Does it work in a gym with no signal?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">Yes. Workouts, measurements and photos are saved on the phone first and sent to the server with retries once you are back online.</p></details>
+      <details class="qa"><summary class="title-2"><span>What happens if the app closes during a workout?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">The workout in progress is saved continuously. Open the app again and it picks up where you left off, with every logged set in place.</p></details>
+      <details class="qa"><summary class="title-2"><span>Do I need a full gym?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">No. There are programs and routines for dumbbells only, bodyweight, resistance bands, suspension trainers and travel, as well as full gym setups.</p></details>
+      <details class="qa"><summary class="title-2"><span>How is the muscle map percentage worked out?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">Each muscle compares the training it got with ideal training over the same period. 100% means five hard sets, three times a week.</p></details>
+      <details class="qa"><summary class="title-2"><span>Can I follow a program and still change a day?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">Yes. You follow one program at a time, and swapping today’s workout overrides that single day without changing the program.</p></details>
+      <details class="qa"><summary class="title-2"><span>Can I add a workout I forgot to log?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">Yes. Tap the day in the Pivot calendar and choose Log workout to fill it in.</p></details>
+      <details class="qa"><summary class="title-2"><span>Kilograms or pounds?</span><i class="ph ph-plus" aria-hidden="true"></i></summary><p class="body-3 muted">Either. Metric and imperial units work across the whole app.</p></details></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="final-title">
+    <div class="wrap">
+      <div class="final blue" data-reveal>
+        <h2 id="final-title" class="heading-2">Train for the body you are building</h2>
+        <p class="body-3 muted">Join early access and be among the first to plan, log and see every muscle you train.</p>
+        
+      <form class="signup" novalidate data-signup>
+        <label class="sr-only" for="email-bottom">Email address</label>
+        <input id="email-bottom" class="body-3" type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-bottom-msg">
+        <button class="btn btn-primary button-md" type="submit"><span>Get early access</span><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        <p id="email-bottom-msg" class="caption-2 form-msg" role="status" aria-live="polite"></p>
+      </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="caption-3 eyebrow">Contact us</p>
+        <h2 id="contact-title" class="heading-2">Talk to the team behind Tensora</h2>
+        <p class="body-3 muted">Questions, feedback or ideas for the app? Write to us, or follow the work on GitHub.</p>
+      </div>
+      <div class="contact" data-group>
+        <a class="contact-card slide-l" href="mailto:contactus@tensora.fit">
+          <span class="tile-icon"><i class="ph ph-envelope-simple" aria-hidden="true"></i></span>
+          <span class="grow"><span class="caption-3 eyebrow">Email</span><span class="title-2">contactus@tensora.fit</span></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+        <a class="contact-card slide-r" href="https://github.com/TensoraHealthAndFitness" target="_blank" rel="noopener noreferrer" aria-label="TensoraHealthAndFitness on GitHub (opens in a new tab)">
+          <span class="tile-icon"><i class="ph ph-github-logo" aria-hidden="true"></i></span>
+          <span class="grow"><span class="caption-3 eyebrow">GitHub</span><span class="title-2">Tensora<wbr>Health<wbr>And<wbr>Fitness</span></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="Tensora, back to top"><img class="logo" src="brand/tensora-logo.webp" alt="Tensora" width="109" height="36"></a>
+    <ul class="body-6">
+      <li><a href="privacy.html">Privacy policy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+    <p class="caption-2 muted">&copy; 2026 Tensora, an app by Tensora</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal once on entry (never replays).
+  const once = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); once.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+  document.querySelectorAll('[data-reveal], [data-group], .feat, .chapter-head, .minis, .tiles, .tabs-strip').forEach((el) => once.observe(el));
+  requestAnimationFrame(() => document.querySelector('.hero').classList.add('in'));
+
+  // Count up the proof numbers.
+  const counters = document.querySelectorAll('.proof [data-count]');
+  if (!reduce) {
+    counters.forEach((el) => { el.textContent = '0'; });
+    setTimeout(() => counters.forEach((el) => {
+      const end = +el.dataset.count, t0 = performance.now(), dur = 1400;
+      const tick = (t) => { const p = Math.min(1, (t - t0) / dur), k = 1 - Math.pow(1 - p, 4); el.textContent = Math.round(end * k).toLocaleString(); if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }), 500);
+  }
+
+  // Videos play only while visible; reduced motion shows posters with controls instead.
+  const videos = document.querySelectorAll('video');
+  if (reduce) videos.forEach((v) => { v.controls = true; });
+  else {
+    const vio = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const v = e.target;
+        if (e.isIntersecting) { if (v.preload === 'none') { v.preload = 'auto'; } v.play().catch(() => {}); }
+        else v.pause();
+      }
+    }, { threshold: 0.35 });
+    videos.forEach((v) => vio.observe(v));
+  }
+
+  // Tagline: words light up one at a time as the paragraph passes a trigger line (rAF throttled).
+  const tag = document.querySelector('[data-tagline]');
+  const words = [...tag.querySelectorAll('.w')];
+  if (reduce) words.forEach((w) => w.classList.add('on'));
+  else {
+    let ticking = false, active = false;
+    const update = () => {
+      ticking = false;
+      // Scroll progress of the paragraph through a trigger line at 62% of the viewport lights words in reading order.
+      const line = innerHeight * 0.62;
+      const r = tag.getBoundingClientRect(), p = Math.min(1, Math.max(0, (line - r.top) / (r.height + 24)));
+      const n = Math.round(p * words.length);
+      words.forEach((w, i) => w.classList.toggle('on', i < n));
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !active) { active = true; addEventListener('scroll', onScroll, { passive: true }); update(); }
+      else if (!e.isIntersecting && active) { active = false; removeEventListener('scroll', onScroll); update(); }
+    }, { rootMargin: '20% 0px' }).observe(tag);
+  }
+})();
+</script>
+<script>
+// Nav current section, mobile menu and signup forms.
+(() => {
+  // Theme: light by default; the toggle switches to dark and swaps every clip to its dark recording.
+  const DARK_CLIPS = new Set(["blueprint-swap-day", "blueprint-today", "coach-program", "coach-routine", "grind-add-alternative", "grind-how-to", "grind-log-set", "physique-3d", "physique-period", "physique-recovery", "physique-strength", "pivot-calendar-month", "pivot-exercise-detail", "pivot-log-past-workout", "pivot-measures", "pivot-stats-calendar", "pivot-training-chart", "pivot-workout-detail", "pivot-year-heatmap"]), DARK_V = '4';
+  const root = document.documentElement, themeBtn = document.querySelector('.theme-btn');
+  const applyClips = (dark) => document.querySelectorAll('video[data-clip]').forEach((v) => {
+    const base = v.dataset.clip, name = dark && DARK_CLIPS.has(base) ? base + '-dark' : base;
+    if (v.dataset.current === name) return;
+    if (!v.dataset.current && name === base) { v.dataset.current = name; return; } // first run in light: markup already has these sources
+    const wasPlaying = !v.paused;
+    // DARK_V busts browser caches when the dark recordings are re-cut under the same file names.
+    const q = '?v=' + (name.endsWith('-dark') ? DARK_V : '4');
+    v.dataset.current = name; v.poster = 'media/' + name + '.jpg' + q;
+    const [webm, mp4] = v.querySelectorAll('source'); webm.src = 'media/' + name + '.webm' + q; mp4.src = 'media/' + name + '.mp4' + q;
+    // The browser picks a source as soon as the element exists (even with preload none), so always reselect.
+    v.load(); if (wasPlaying) v.play().catch(() => {});
+  });
+  const setTheme = (dark, save) => {
+    root.dataset.theme = dark ? 'dark' : 'light';
+    themeBtn.setAttribute('aria-pressed', dark); themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    applyClips(dark);
+    if (save) { try { localStorage.setItem('tensora-theme', dark ? 'dark' : 'light'); } catch (e) {} }
+  };
+  setTheme(root.dataset.theme === 'dark', false);
+  themeBtn.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark', true));
+
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const obs = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) links.forEach((a) => a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'));
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) obs.observe(s); });
+
+  // Mobile menu
+  const btn = document.querySelector('.menu-btn'), sheet = document.getElementById('sheet');
+  const set = (open) => { btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); sheet.classList.toggle('open', open); sheet.setAttribute('aria-hidden', !open); document.body.style.overflow = open ? 'hidden' : ''; };
+  btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+  sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+
+  // Signup forms: client side validation. SIGNUP_ENDPOINT is where addresses are posted once a list exists.
+  const SIGNUP_ENDPOINT = '';
+  document.querySelectorAll('[data-signup]').forEach((form) => {
+    const input = form.querySelector('input'), msg = form.querySelector('.form-msg'), button = form.querySelector('button');
+    const say = (text, kind) => { msg.textContent = text; msg.className = 'caption-2 form-msg ' + kind; };
+    input.addEventListener('input', () => { if (input.getAttribute('aria-invalid') === 'true' && input.validity.valid) { input.removeAttribute('aria-invalid'); say('', ''); } });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = input.value.trim();
+      if (!email) { input.setAttribute('aria-invalid', 'true'); say('Enter your email address to join early access.', 'err'); input.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { input.setAttribute('aria-invalid', 'true'); say('That email address looks incomplete. Check it and try again.', 'err'); input.focus(); return; }
+      button.setAttribute('aria-busy', 'true');
+      try {
+        if (SIGNUP_ENDPOINT) {
+          const r = await fetch(SIGNUP_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+          if (!r.ok) throw new Error();
+        }
+        form.reset(); say('Thanks. We will email ' + email + ' when early access opens.', 'ok');
+      } catch { say('We could not save your address. Check your connection and try again.', 'err'); }
+      finally { button.removeAttribute('aria-busy'); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
