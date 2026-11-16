@@ -1,0 +1,13 @@
+# Cloudflare wrangler cache
+.wrangler/
+
+# The previous Tensora theme page (kept locally, not part of this site)
+/index.html
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+*.swp
