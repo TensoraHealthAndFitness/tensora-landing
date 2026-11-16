@@ -90,7 +90,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 /* The wordmark is deep indigo: in dark mode it sits on a small white plate so it stays readable */
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; } }
 :root[data-theme="dark"] .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; }
-.band.blue.blue, .fill.blue.blue { position: absolute; }
+.band.blue.blue, .fill.blue.blue, .card-band.blue.blue { position: absolute; }
 main, footer { overflow-x: clip; }
 h1, h2, h3, h4, p { margin: 0; text-wrap: balance; }
 p, li { text-wrap: pretty; }
@@ -248,6 +248,16 @@ section { padding: var(--s900) 0; }
 .mini[data-from="right"] { transform: translateX(72px); }
 .minis.in .mini { opacity: 1; transform: none; }
 .phone-sm { width: 176px; margin-bottom: var(--s100); }
+.chapter-cards { grid-template-columns: 1fr; margin: var(--s600) 0 calc(var(--s900) + var(--s600)); }
+.chapter-cards { position: relative; }
+/* Purple grid band behind the feature cards, edge to edge across the viewport */
+.chapter-cards .card-band.blue { position: absolute; top: calc(-1 * var(--s600)); bottom: calc(-1 * var(--s600)); left: 50%; width: 100vw; margin-left: -50vw; border-radius: 0; z-index: 0;
+  transform: scaleX(0); transition: transform 1100ms var(--ease); }
+.chapter-cards.in .card-band { transform: scaleX(1); }
+.card-row { position: relative; z-index: 1; }
+.card-row { display: flex; justify-content: center; gap: var(--s300); }
+.card-row.fill { justify-content: space-between; }
+.card-row .mini { flex: 0 0 calc((100% - 3 * var(--s300)) / 4); }
 .mini h4 { color: var(--ink); }
 
 /* Tagline reveal */
@@ -328,6 +338,8 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .feat-copy { text-align: left; }
   .tabs-strip { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .tiles, .minis { grid-template-columns: 1fr 1fr; }
+  .card-row, .card-row.fill { flex-wrap: wrap; justify-content: center; }
+  .card-row .mini { flex-basis: calc((100% - var(--s300)) / 2); }
 }
 @media (max-width: 640px) {
   .wrap { padding: 0 var(--s200); }
@@ -346,6 +358,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .tabs-strip { grid-template-columns: 1fr 1fr; }
   .tabs-strip a:last-child { grid-column: 1 / -1; }
   .split, .tiles, .steps, .contact, .minis { grid-template-columns: 1fr; }
+  .card-row .mini { flex-basis: 100%; }
   .signup { grid-template-columns: 1fr; }
   .hero .sub br { display: none; }
   .vision { padding: var(--s600) var(--s200); }
@@ -358,7 +371,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-property: opacity, color, background-color !important; transition-duration: 300ms !important; transition-delay: 0ms !important; }
   .band, .fill, .rule .half { transform: none !important; }
-  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
+  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, .card-band, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
   .stage .side-l { transform: rotate(-4deg) !important; }
   .stage .side-r { transform: rotate(4deg) !important; }
   .tagline .w { color: var(--ink); }
@@ -371,10 +384,10 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 <nav class="nav" aria-label="Main">
   <a class="brand" href="#top" aria-label="Tensora home"><img class="logo" src="brand/tensora-logo.webp" alt="Tensora" width="109" height="36"></a>
   <ul class="nav-links title-4">
-    <li><a href="#plan">Plan</a></li>
-    <li><a href="#train">Train</a></li>
+    <li><a href="#plan">Blueprint</a></li>
+    <li><a href="#train">Grind</a></li>
+    <li><a href="#history">Pivot</a></li>
     <li><a href="#physique">Physique</a></li>
-    <li><a href="#history">History</a></li>
     <li><a href="#coach">Coach</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -385,10 +398,10 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 </nav>
 <div class="sheet" id="sheet" aria-hidden="true">
   <ul class="heading-5">
-    <li style="--i:0"><a href="#plan">Plan</a></li>
-    <li style="--i:1"><a href="#train">Train</a></li>
-    <li style="--i:2"><a href="#physique">Physique</a></li>
-    <li style="--i:3"><a href="#history">History</a></li>
+    <li style="--i:0"><a href="#plan">Blueprint</a></li>
+    <li style="--i:1"><a href="#train">Grind</a></li>
+    <li style="--i:2"><a href="#history">Pivot</a></li>
+    <li style="--i:3"><a href="#physique">Physique</a></li>
     <li style="--i:4"><a href="#coach">Coach</a></li>
     <li style="--i:5"><a href="#faq">FAQ</a></li>
     <li style="--i:6"><a href="#contact">Contact</a></li>
@@ -420,8 +433,8 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <nav class="tabs-strip" aria-label="App tabs">
         <a href="#plan" style="--i:0; --from:-48px"><i class="ph ph-calendar-check" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Blueprint</span><span class="caption-2 muted">Today&rsquo;s plan</span></a>
         <a href="#train" style="--i:1; --from:-24px"><i class="ph ph-barbell" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Grind</span><span class="caption-2 muted">Live logging</span></a>
-        <a href="#physique" style="--i:2; --from:0px"><i class="ph ph-person-simple" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Physique</span><span class="caption-2 muted">Muscle map</span></a>
-        <a href="#history" style="--i:3; --from:24px"><i class="ph ph-chart-bar" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Pivot</span><span class="caption-2 muted">History and stats</span></a>
+        <a href="#history" style="--i:2; --from:0px"><i class="ph ph-chart-bar" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Pivot</span><span class="caption-2 muted">History and stats</span></a>
+        <a href="#physique" style="--i:3; --from:24px"><i class="ph ph-person-simple" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Physique</span><span class="caption-2 muted">Muscle map</span></a>
         <a href="#coach" style="--i:4; --from:48px"><i class="ph ph-clipboard-text" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Coach</span><span class="caption-2 muted">Programs</span></a>
       </nav>
     </div>
@@ -458,15 +471,6 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 
   <div class="wrap">%%CHAPTERS%%</div>
 
-  <section id="more" aria-labelledby="more-title">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <p class="caption-3 eyebrow">More in the app</p>
-        <h2 id="more-title" class="heading-2">Small screens that save you time</h2>
-      </div>
-      %%MORE%%
-    </div>
-  </section>
 
   <section class="tagline" aria-label="What Tensora is for">
     <div class="wrap"><p class="heading-2" data-tagline>%%TAGLINE%%</p></div>

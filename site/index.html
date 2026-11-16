@@ -90,7 +90,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 /* The wordmark is deep indigo: in dark mode it sits on a small white plate so it stays readable */
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; } }
 :root[data-theme="dark"] .logo { background: #ffffff; padding: var(--s25) var(--s75); border-radius: 6px; box-sizing: content-box; height: 32px; }
-.band.blue.blue, .fill.blue.blue { position: absolute; }
+.band.blue.blue, .fill.blue.blue, .card-band.blue.blue { position: absolute; }
 main, footer { overflow-x: clip; }
 h1, h2, h3, h4, p { margin: 0; text-wrap: balance; }
 p, li { text-wrap: pretty; }
@@ -248,6 +248,16 @@ section { padding: var(--s900) 0; }
 .mini[data-from="right"] { transform: translateX(72px); }
 .minis.in .mini { opacity: 1; transform: none; }
 .phone-sm { width: 176px; margin-bottom: var(--s100); }
+.chapter-cards { grid-template-columns: 1fr; margin: var(--s600) 0 calc(var(--s900) + var(--s600)); }
+.chapter-cards { position: relative; }
+/* Purple grid band behind the feature cards, edge to edge across the viewport */
+.chapter-cards .card-band.blue { position: absolute; top: calc(-1 * var(--s600)); bottom: calc(-1 * var(--s600)); left: 50%; width: 100vw; margin-left: -50vw; border-radius: 0; z-index: 0;
+  transform: scaleX(0); transition: transform 1100ms var(--ease); }
+.chapter-cards.in .card-band { transform: scaleX(1); }
+.card-row { position: relative; z-index: 1; }
+.card-row { display: flex; justify-content: center; gap: var(--s300); }
+.card-row.fill { justify-content: space-between; }
+.card-row .mini { flex: 0 0 calc((100% - 3 * var(--s300)) / 4); }
 .mini h4 { color: var(--ink); }
 
 /* Tagline reveal */
@@ -328,6 +338,8 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .feat-copy { text-align: left; }
   .tabs-strip { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .tiles, .minis { grid-template-columns: 1fr 1fr; }
+  .card-row, .card-row.fill { flex-wrap: wrap; justify-content: center; }
+  .card-row .mini { flex-basis: calc((100% - var(--s300)) / 2); }
 }
 @media (max-width: 640px) {
   .wrap { padding: 0 var(--s200); }
@@ -346,6 +358,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   .tabs-strip { grid-template-columns: 1fr 1fr; }
   .tabs-strip a:last-child { grid-column: 1 / -1; }
   .split, .tiles, .steps, .contact, .minis { grid-template-columns: 1fr; }
+  .card-row .mini { flex-basis: 100%; }
   .signup { grid-template-columns: 1fr; }
   .hero .sub br { display: none; }
   .vision { padding: var(--s600) var(--s200); }
@@ -358,7 +371,7 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-property: opacity, color, background-color !important; transition-duration: 300ms !important; transition-delay: 0ms !important; }
   .band, .fill, .rule .half { transform: none !important; }
-  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
+  .phone, .phone-main, .phone-side, .feat-copy, .ticks li, .mini, .tile, .slide-l, .slide-r, .hero-copy > *, .tabs-strip a, .steps .step, .card-band, [data-reveal], .chapter-head > *, .rule .badge { transform: none !important; }
   .stage .side-l { transform: rotate(-4deg) !important; }
   .stage .side-r { transform: rotate(4deg) !important; }
   .tagline .w { color: var(--ink); }
@@ -371,10 +384,10 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 <nav class="nav" aria-label="Main">
   <a class="brand" href="#top" aria-label="Tensora home"><img class="logo" src="brand/tensora-logo.webp" alt="Tensora" width="109" height="36"></a>
   <ul class="nav-links title-4">
-    <li><a href="#plan">Plan</a></li>
-    <li><a href="#train">Train</a></li>
+    <li><a href="#plan">Blueprint</a></li>
+    <li><a href="#train">Grind</a></li>
+    <li><a href="#history">Pivot</a></li>
     <li><a href="#physique">Physique</a></li>
-    <li><a href="#history">History</a></li>
     <li><a href="#coach">Coach</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -385,10 +398,10 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
 </nav>
 <div class="sheet" id="sheet" aria-hidden="true">
   <ul class="heading-5">
-    <li style="--i:0"><a href="#plan">Plan</a></li>
-    <li style="--i:1"><a href="#train">Train</a></li>
-    <li style="--i:2"><a href="#physique">Physique</a></li>
-    <li style="--i:3"><a href="#history">History</a></li>
+    <li style="--i:0"><a href="#plan">Blueprint</a></li>
+    <li style="--i:1"><a href="#train">Grind</a></li>
+    <li style="--i:2"><a href="#history">Pivot</a></li>
+    <li style="--i:3"><a href="#physique">Physique</a></li>
     <li style="--i:4"><a href="#coach">Coach</a></li>
     <li style="--i:5"><a href="#faq">FAQ</a></li>
     <li style="--i:6"><a href="#contact">Contact</a></li>
@@ -426,8 +439,8 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
       <nav class="tabs-strip" aria-label="App tabs">
         <a href="#plan" style="--i:0; --from:-48px"><i class="ph ph-calendar-check" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Blueprint</span><span class="caption-2 muted">Today&rsquo;s plan</span></a>
         <a href="#train" style="--i:1; --from:-24px"><i class="ph ph-barbell" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Grind</span><span class="caption-2 muted">Live logging</span></a>
-        <a href="#physique" style="--i:2; --from:0px"><i class="ph ph-person-simple" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Physique</span><span class="caption-2 muted">Muscle map</span></a>
-        <a href="#history" style="--i:3; --from:24px"><i class="ph ph-chart-bar" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Pivot</span><span class="caption-2 muted">History and stats</span></a>
+        <a href="#history" style="--i:2; --from:0px"><i class="ph ph-chart-bar" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Pivot</span><span class="caption-2 muted">History and stats</span></a>
+        <a href="#physique" style="--i:3; --from:24px"><i class="ph ph-person-simple" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Physique</span><span class="caption-2 muted">Muscle map</span></a>
         <a href="#coach" style="--i:4; --from:48px"><i class="ph ph-clipboard-text" aria-hidden="true"></i><span class="title-3" style="color:var(--ink)">Coach</span><span class="caption-2 muted">Programs</span></a>
       </nav>
     </div>
@@ -480,16 +493,15 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Session length, exercise count and total sets at a glance</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A source chip for program, routine or generated sessions</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weekly sets against your target, with the top muscles</span></li></ul>
       </div>
     </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-day" poster="media/blueprint-swap-day.jpg?v=4" aria-label="Change the whole day in one sheet"><source src="media/blueprint-swap-day.webm?v=4" type="video/webm"><source src="media/blueprint-swap-day.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Blueprint · 01</p>
-        <h3 class="heading-4">Change the whole day in one sheet</h3>
-        <p class="body-3 muted">Not feeling push day? Swap today for a rest day, another day of your program, one of your own routines, a generated session or any routine from the Coach library.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Recharge turns today into a rest day</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Coach routines grouped in eight categories, with search</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>The swap lasts for today and survives an app restart</span></li></ul>
-      </div>
-    </article>
-    
+    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-day" poster="media/blueprint-swap-day.jpg?v=4" aria-label="Change the whole day in one sheet"><source src="media/blueprint-swap-day.webm?v=4" type="video/webm"><source src="media/blueprint-swap-day.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Swap today for rest, a routine or another day</h4>
+      </article>
+      <article class="mini" style="--i:1" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="blueprint-swap-exercise" poster="media/blueprint-swap-exercise.jpg?v=4" aria-label="Swap one exercise"><source src="media/blueprint-swap-exercise.webm?v=4" type="video/webm"><source src="media/blueprint-swap-exercise.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Swap any exercise for one that hits the same muscle</h4>
+      </article></div></div>
   </section>
   <section class="chapter" id="train" aria-labelledby="train-title">
     <header class="chapter-head">
@@ -508,58 +520,20 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Working, warm up, drop and failure sets</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight in kilograms or pounds, reps and optional effort</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Every exercise keeps its own timer, so your workout time stays honest</span></li></ul>
       </div>
     </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-how-to" poster="media/grind-how-to.jpg?v=4" aria-label="Form cues and alternatives on the same screen"><source src="media/grind-how-to.webm?v=4" type="video/webm"><source src="media/grind-how-to.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Grind · 02</p>
-        <h3 class="heading-4">Form cues and alternatives on the same screen</h3>
-        <p class="body-3 muted">Each exercise has numbered steps and a carousel of alternatives that hit the same muscle with other equipment. Bench taken? Swap to the cable version and keep going.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Step by step “How to perform” instructions</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Alternatives for the same muscle and movement</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Target muscles shown on the body</span></li></ul>
-      </div>
-    </article>
-    
-  </section>
-  <section class="chapter" id="physique" aria-labelledby="physique-title">
-    <header class="chapter-head">
-      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-person-simple"></i></span><span class="half r"></span></div>
-      <p class="caption-3 eyebrow">03 · Physique</p>
-      <h2 id="physique-title" class="heading-2">See where your training actually lands</h2>
-      <p class="body-3 muted lead">Every working set is mapped onto the muscles it trains. Turn the body in 3D, switch the period and see what is growing and what is falling behind.</p>
-    </header>
-    
-    <article class="feat" data-side="left">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-3d" poster="media/physique-3d.jpg?v=4" aria-label="A muscle map you can turn in your hand"><source src="media/physique-3d.webm?v=4" type="video/webm"><source src="media/physique-3d.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Physique · 03</p>
-        <h3 class="heading-4">A muscle map you can turn in your hand</h3>
-        <p class="body-3 muted">Body distribution colours each muscle by the training it got against ideal training over the same period. Drag to rotate the full 3D model, or flip to the 2D front and back view.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>2D or 3D, front and back</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>100% means five hard sets, three times a week</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Last week, last month or last year</span></li></ul>
-      </div>
-    </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-recovery" poster="media/physique-recovery.jpg?v=4" aria-label="Know what is ready to train"><source src="media/physique-recovery.webm?v=4" type="video/webm"><source src="media/physique-recovery.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Physique · 03</p>
-        <h3 class="heading-4">Know what is ready to train</h3>
-        <p class="body-3 muted">The recovery estimate colours the body by how rested each muscle is and suggests what to train today instead.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Under 50%, recovering and ready states</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap a muscle or a row for its estimate</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A tip card names the muscles that are ready</span></li></ul>
-      </div>
-    </article>
-    <article class="feat" data-side="left">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-strength" poster="media/physique-strength.jpg?v=4" aria-label="Strength and records from your own logs"><source src="media/physique-strength.webm?v=4" type="video/webm"><source src="media/physique-strength.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Physique · 03</p>
-        <h3 class="heading-4">Strength and records from your own logs</h3>
-        <p class="body-3 muted">Below the map, a per muscle recovery list leads into Performance: a strength score with a running sparkline, weekly volume bars and a wall of records by body region.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Ready in times for muscles still recovering</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weekly volume bars</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A PR wall grouped by body region</span></li></ul>
-      </div>
-    </article>
-    
+    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-how-to" poster="media/grind-how-to.jpg?v=4" aria-label="Form cues and alternatives on the same screen"><source src="media/grind-how-to.webm?v=4" type="video/webm"><source src="media/grind-how-to.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Form cues and alternatives on the same screen</h4>
+      </article>
+      <article class="mini" style="--i:1" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="grind-add-alternative" poster="media/grind-add-alternative.jpg?v=4" aria-label="Add an exercise mid workout"><source src="media/grind-add-alternative.webm?v=4" type="video/webm"><source src="media/grind-add-alternative.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Add an exercise mid workout and keep your logged sets</h4>
+      </article></div></div>
   </section>
   <section class="chapter" id="history" aria-labelledby="history-title">
     <header class="chapter-head">
       <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-chart-bar"></i></span><span class="half r"></span></div>
-      <p class="caption-3 eyebrow">04 · Pivot</p>
+      <p class="caption-3 eyebrow">03 · Pivot</p>
       <h2 id="history-title" class="heading-2">Every workout, every number, every streak</h2>
       <p class="body-3 muted lead">Pivot is your training history. Charts, calendars, measurements and the full detail of every session you have logged.</p>
     </header>
@@ -567,40 +541,60 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
     <article class="feat" data-side="left">
       <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-training-chart" poster="media/pivot-training-chart.jpg?v=4" aria-label="One chart, three ways to read it"><source src="media/pivot-training-chart.webm?v=4" type="video/webm"><source src="media/pivot-training-chart.mp4?v=4" type="video/mp4"></video></div></figure></div>
       <div class="feat-copy">
-        <p class="caption-3 eyebrow">Pivot · 04</p>
+        <p class="caption-3 eyebrow">Pivot · 03</p>
         <h3 class="heading-4">One chart, three ways to read it</h3>
         <p class="body-3 muted">The Training card switches between duration, volume and reps, for this week, this month or this year, with the change against the previous period.</p>
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Duration, volume or reps</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Week, month or year</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A monthly summary of workouts, volume and streak</span></li></ul>
       </div>
     </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-workout-detail" poster="media/pivot-workout-detail.jpg?v=4" aria-label="The full story of each session"><source src="media/pivot-workout-detail.webm?v=4" type="video/webm"><source src="media/pivot-workout-detail.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Pivot · 04</p>
-        <h3 class="heading-4">The full story of each session</h3>
-        <p class="body-3 muted">Open any workout to see its time, volume, sets and reps, a muscle mix bar, and every set with its estimated one rep max and record badges.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Estimated one rep max on every set</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight, one rep max and volume record badges</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Jump to the previous or next workout</span></li></ul>
-      </div>
-    </article>
-    <article class="feat" data-side="left">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-calendar-month" poster="media/pivot-calendar-month.jpg?v=4" aria-label="A calendar that keeps you honest"><source src="media/pivot-calendar-month.webm?v=4" type="video/webm"><source src="media/pivot-calendar-month.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Pivot · 04</p>
-        <h3 class="heading-4">A calendar that keeps you honest</h3>
-        <p class="body-3 muted">Training days are marked with a flame and joined by streak bars. Scroll back through months and see exactly how consistent you have been.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Week streaks and runs within the month</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Days and sessions per month</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap a day to open its workouts</span></li></ul>
-      </div>
-    </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-measures" poster="media/pivot-measures.jpg?v=4" aria-label="Measurements beyond body weight"><source src="media/pivot-measures.webm?v=4" type="video/webm"><source src="media/pivot-measures.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Pivot · 04</p>
-        <h3 class="heading-4">Measurements beyond body weight</h3>
-        <p class="body-3 muted">Track 16 kinds of measurement, from body weight and body fat to neck, chest and arm circumferences, each with its own trend chart and history.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>A trend chart with a change pill</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Tap an entry to edit it</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Weight and height stay in sync with your profile</span></li></ul>
-      </div>
-    </article>
+    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-workout-detail" poster="media/pivot-workout-detail.jpg?v=4" aria-label="Every workout and exercise"><source src="media/pivot-workout-detail.webm?v=4" type="video/webm"><source src="media/pivot-workout-detail.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Every workout in full, even ones you forgot to log</h4>
+      </article>
+      <article class="mini" style="--i:1" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-calendar-month" poster="media/pivot-calendar-month.jpg?v=4" aria-label="Calendar and year heatmap"><source src="media/pivot-calendar-month.webm?v=4" type="video/webm"><source src="media/pivot-calendar-month.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Streak calendar and a year heatmap</h4>
+      </article>
+      <article class="mini" style="--i:2" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-stats-calendar" poster="media/pivot-stats-calendar.jpg?v=4" aria-label="Balance radar and streaks"><source src="media/pivot-stats-calendar.webm?v=4" type="video/webm"><source src="media/pivot-stats-calendar.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">A balance radar for your physique</h4>
+      </article>
+      <article class="mini" style="--i:3" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-measures" poster="media/pivot-measures.jpg?v=4" aria-label="Measurements beyond body weight"><source src="media/pivot-measures.webm?v=4" type="video/webm"><source src="media/pivot-measures.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">16 body measurements with trend charts</h4>
+      </article></div></div>
+  </section>
+  <section class="chapter" id="physique" aria-labelledby="physique-title">
+    <header class="chapter-head">
+      <div class="rule" aria-hidden="true"><span class="half l"></span><span class="badge"><i class="ph ph-person-simple"></i></span><span class="half r"></span></div>
+      <p class="caption-3 eyebrow">04 · Physique</p>
+      <h2 id="physique-title" class="heading-2">See where your training actually lands</h2>
+      <p class="body-3 muted lead">Every working set is mapped onto the muscles it trains. Turn the body in 3D, switch the period and see what is growing and what is falling behind.</p>
+    </header>
     
+    <article class="feat" data-side="left">
+      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-3d" poster="media/physique-3d.jpg?v=4" aria-label="A muscle map you can turn in your hand"><source src="media/physique-3d.webm?v=4" type="video/webm"><source src="media/physique-3d.mp4?v=4" type="video/mp4"></video></div></figure></div>
+      <div class="feat-copy">
+        <p class="caption-3 eyebrow">Physique · 04</p>
+        <h3 class="heading-4">A muscle map you can turn in your hand</h3>
+        <p class="body-3 muted">Body distribution colours each muscle by the training it got against ideal training over the same period. Drag to rotate the full 3D model, or flip to the 2D front and back view.</p>
+        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>2D or 3D, front and back</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>100% means five hard sets, three times a week</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Last week, last month or last year</span></li></ul>
+      </div>
+    </article>
+    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-recovery" poster="media/physique-recovery.jpg?v=4" aria-label="Know what is ready to train"><source src="media/physique-recovery.webm?v=4" type="video/webm"><source src="media/physique-recovery.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">See which muscles are ready to train</h4>
+      </article>
+      <article class="mini" style="--i:1" data-from="right">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-strength" poster="media/physique-strength.jpg?v=4" aria-label="Strength and records from your own logs"><source src="media/physique-strength.webm?v=4" type="video/webm"><source src="media/physique-strength.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Strength score, weekly volume and records</h4>
+      </article>
+      <article class="mini" style="--i:2" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="physique-period" poster="media/physique-period.jpg?v=4" aria-label="Week, month or year"><source src="media/physique-period.webm?v=4" type="video/webm"><source src="media/physique-period.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Shade the map by week, month or year</h4>
+      </article></div></div>
   </section>
   <section class="chapter" id="coach" aria-labelledby="coach-title">
     <header class="chapter-head">
@@ -619,47 +613,13 @@ footer { padding: var(--s600) 0; border-top: 1px solid var(--line); }
         <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Filters for goal, level, days per week and equipment</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Day routines with time and muscles worked</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Follow a program and Coach tracks the week for you</span></li></ul>
       </div>
     </article>
-    <article class="feat" data-side="right">
-      <div class="feat-media"><div class="fill blue" aria-hidden="true"></div><figure class="phone"><div class="screen"><video muted loop playsinline preload="none" data-clip="coach-routine" poster="media/coach-routine.jpg?v=4" aria-label="Routines you can read before you start"><source src="media/coach-routine.webm?v=4" type="video/webm"><source src="media/coach-routine.mp4?v=4" type="video/mp4"></video></div></figure></div>
-      <div class="feat-copy">
-        <p class="caption-3 eyebrow">Coach · 05</p>
-        <h3 class="heading-4">Routines you can read before you start</h3>
-        <p class="body-3 muted">Each routine shows its time, exercise and set counts, a body map of the muscles it works, the equipment it needs and every exercise with sets, reps and rest.</p>
-        <ul class="ticks body-6"><li style="--i:0"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Muscles worked on a front and back body map</span></li><li style="--i:1"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Supersets grouped together</span></li><li style="--i:2"><i class="ph ph-check-circle" aria-hidden="true"></i><span>Start it now or save it to My routines</span></li></ul>
-      </div>
-    </article>
-    
+    <div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span><div class="card-row">
+      <article class="mini" style="--i:0" data-from="left">
+        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="coach-routine" poster="media/coach-routine.jpg?v=4" aria-label="Routines you can read before you start"><source src="media/coach-routine.webm?v=4" type="video/webm"><source src="media/coach-routine.mp4?v=4" type="video/mp4"></video></div></figure>
+        <h4 class="title-2">Read every routine before you start</h4>
+      </article></div></div>
   </section></div>
 
-  <section id="more" aria-labelledby="more-title">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <p class="caption-3 eyebrow">More in the app</p>
-        <h2 id="more-title" class="heading-2">Small screens that save you time</h2>
-      </div>
-      <div class="minis" data-count="4">
-      <article class="mini" style="--i:0" data-from="left">
-        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-stats-calendar" poster="media/pivot-stats-calendar.jpg?v=4" aria-label="Balance radar and streaks"><source src="media/pivot-stats-calendar.webm?v=4" type="video/webm"><source src="media/pivot-stats-calendar.mp4?v=4" type="video/mp4"></video></div></figure>
-        <h4 class="title-2">Balance radar and streaks</h4>
-        <p class="body-6 muted">A hexagon radar shows how balanced your physique work is, next to the streak calendar.</p>
-      </article>
-      <article class="mini" style="--i:1" data-from="right">
-        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-exercise-detail" poster="media/pivot-exercise-detail.jpg?v=4" aria-label="Exercise pages"><source src="media/pivot-exercise-detail.webm?v=4" type="video/webm"><source src="media/pivot-exercise-detail.mp4?v=4" type="video/mp4"></video></div></figure>
-        <h4 class="title-2">Exercise pages</h4>
-        <p class="body-6 muted">Progress charts, full history and how to notes for every exercise you have done.</p>
-      </article>
-      <article class="mini" style="--i:2" data-from="left">
-        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-log-past-workout" poster="media/pivot-log-past-workout.jpg?v=4" aria-label="Log a workout you forgot"><source src="media/pivot-log-past-workout.webm?v=4" type="video/webm"><source src="media/pivot-log-past-workout.mp4?v=4" type="video/mp4"></video></div></figure>
-        <h4 class="title-2">Log a workout you forgot</h4>
-        <p class="body-6 muted">Tap any past day and fill in the session you did not record at the time.</p>
-      </article>
-      <article class="mini" style="--i:3" data-from="right">
-        <figure class="phone phone-sm"><div class="screen"><video muted loop playsinline preload="none" data-clip="pivot-year-heatmap" poster="media/pivot-year-heatmap.jpg?v=4" aria-label="A year at a glance"><source src="media/pivot-year-heatmap.webm?v=4" type="video/webm"><source src="media/pivot-year-heatmap.mp4?v=4" type="video/mp4"></video></div></figure>
-        <h4 class="title-2">A year at a glance</h4>
-        <p class="body-6 muted">Twelve monthly heatmaps shaded by sets, volume or duration.</p>
-      </article></div>
-    </div>
-  </section>
 
   <section class="tagline" aria-label="What Tensora is for">
     <div class="wrap"><p class="heading-2" data-tagline><span class="w">Every</span> <span class="w">set</span> <span class="w">you</span> <span class="w">log</span> <span class="w">lands</span> <span class="w">on</span> <span class="w">a</span> <span class="w">muscle</span> <span class="w">you</span> <span class="w">can</span> <span class="w">see.</span> <span class="w">Every</span> <span class="w">week</span> <span class="w">shows</span> <span class="w">you</span> <span class="w">where</span> <span class="w">to</span> <span class="w">aim</span> <span class="w">next.</span></p></div>

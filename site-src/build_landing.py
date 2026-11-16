@@ -27,15 +27,28 @@ def row(i, tab, name, title, body, ticks):
       </div>
     </article>'''
 
+def card_grid(cards):
+    # Cards are always a quarter of the content width. Up to four sit in one row; more split
+    # into two rows, and a second row that is short of four spreads out to the full width.
+    n = len(cards)
+    assert n <= 8, 'more than eight cards would need a third row'
+    split = n if n <= 4 else 4
+    rows = [cards[:split], cards[split:]] if n > 4 else [cards]
+    out, k = '', 0
+    for r, cs in enumerate(rows):
+        fill = ' fill' if r > 0 else ''
+        out += f'<div class="card-row{fill}">' + ''.join(mini(k + i, *c) for i, c in enumerate(cs)) + '</div>'
+        k += len(cs)
+    return f'<div class="minis chapter-cards"><span class="card-band blue" aria-hidden="true"></span>{out}</div>'
+
 def mini(i, name, title, body):
     return f'''
       <article class="mini" style="--i:{i}" data-from="{'left' if i % 2 == 0 else 'right'}">
         {video(name, title, 'phone phone-sm')}
-        <h4 class="title-2">{title}</h4>
-        <p class="body-6 muted">{body}</p>
+        <h4 class="title-2">{CARD_TITLES.get(name, title)}</h4>
       </article>'''
 
-CHAPTERS = [
+CHAPTERS_SRC = [
     dict(id='plan', num='01', tab='Blueprint', icon='ph-calendar-check', title='A week planned around you',
          lead='Tensora builds your training week from your height, weight, goal, experience, days per week and session length. Open the app and today is already laid out.',
          rows=[
@@ -46,7 +59,9 @@ CHAPTERS = [
              'Not feeling push day? Swap today for a rest day, another day of your program, one of your own routines, a generated session or any routine from the Coach library.',
              ['Recharge turns today into a rest day', 'Coach routines grouped in eight categories, with search', 'The swap lasts for today and survives an app restart']),
          ],
-         minis=[]),
+         minis=[
+            ('blueprint-swap-exercise', 'Swap one exercise', 'Pick an alternative for the same muscle, filtered by body region, and the session updates.'),
+         ]),
     dict(id='train', num='02', tab='Grind', icon='ph-barbell', title='Log sets without breaking focus',
          lead='Grind is the live workout screen. Big steppers, a rest timer that starts on its own and instructions one scroll away.',
          rows=[
@@ -57,7 +72,9 @@ CHAPTERS = [
              'Each exercise has numbered steps and a carousel of alternatives that hit the same muscle with other equipment. Bench taken? Swap to the cable version and keep going.',
              ['Step by step “How to perform” instructions', 'Alternatives for the same muscle and movement', 'Target muscles shown on the body']),
          ],
-         minis=[]),
+         minis=[
+            ('grind-add-alternative', 'Add an exercise mid workout', 'Add an alternative after the current exercise and keep the sets you already logged.'),
+         ]),
     dict(id='physique', num='03', tab='Physique', icon='ph-person-simple', title='See where your training actually lands',
          lead='Every working set is mapped onto the muscles it trains. Turn the body in 3D, switch the period and see what is growing and what is falling behind.',
          rows=[
@@ -71,7 +88,9 @@ CHAPTERS = [
              'Below the map, a per muscle recovery list leads into Performance: a strength score with a running sparkline, weekly volume bars and a wall of records by body region.',
              ['Ready in times for muscles still recovering', 'Weekly volume bars', 'A PR wall grouped by body region']),
          ],
-         minis=[]),
+         minis=[
+            ('physique-period', 'Week, month or year', 'Switch the period and the muscle map reshades to match.'),
+         ]),
     dict(id='history', num='04', tab='Pivot', icon='ph-chart-bar', title='Every workout, every number, every streak',
          lead='Pivot is your training history. Charts, calendars, measurements and the full detail of every session you have logged.',
          rows=[
@@ -107,6 +126,51 @@ CHAPTERS = [
          minis=[]),
 ]
 
+_ORDER = ['plan', 'train', 'history', 'physique', 'coach']
+CHAPTERS = sorted(CHAPTERS_SRC, key=lambda c: _ORDER.index(c['id']))
+for _n, _c in enumerate(CHAPTERS, 1):
+    _c['num'] = f'{_n:02d}'
+
+# Pivot has more features than fit one row, so related ones share a card.
+next(c for c in CHAPTERS if c['id'] == 'history')['cards'] = [
+    ('pivot-workout-detail', 'Every workout and exercise',
+     'Each session with every set, estimated one rep max and records. Exercise pages with progress charts. Log a workout you forgot.'),
+    ('pivot-calendar-month', 'Calendar and year heatmap',
+     'Training days joined by streak bars, and twelve monthly heatmaps shaded by sets, volume or duration.'),
+    ('pivot-stats-calendar', 'Balance radar and streaks',
+     'A hexagon radar shows how balanced your physique work is, next to the streak calendar.'),
+    ('pivot-measures', 'Measurements beyond body weight',
+     '16 measurements, each with its own trend chart and history.'),
+]
+
+# Short copy for features shown as cards (the long copy is kept for the main feature rows).
+CARD_COPY = {
+    'blueprint-swap-day': 'Swap today for rest, another program day, your own routine or one from Coach.',
+    'grind-how-to': 'Numbered steps and alternatives for the same muscle, one scroll away.',
+    'physique-recovery': 'See which muscles are rested and what to train today.',
+    'physique-strength': 'A strength score, weekly volume bars and a wall of records.',
+    'pivot-workout-detail': 'Every set of every session, with estimated one rep max and record badges.',
+    'pivot-calendar-month': 'Training days marked with a flame and joined by streak bars.',
+    'pivot-measures': '16 measurements, each with its own trend chart and history.',
+    'coach-routine': 'Time, sets, muscles worked and equipment before you start.',
+}
+
+# Feature cards carry one crisp line each, no separate description.
+CARD_TITLES = {
+    'blueprint-swap-day': 'Swap today for rest, a routine or another day',
+    'blueprint-swap-exercise': 'Swap any exercise for one that hits the same muscle',
+    'grind-how-to': 'Form cues and alternatives on the same screen',
+    'grind-add-alternative': 'Add an exercise mid workout and keep your logged sets',
+    'pivot-workout-detail': 'Every workout in full, even ones you forgot to log',
+    'pivot-calendar-month': 'Streak calendar and a year heatmap',
+    'pivot-stats-calendar': 'A balance radar for your physique',
+    'pivot-measures': '16 body measurements with trend charts',
+    'physique-recovery': 'See which muscles are ready to train',
+    'physique-strength': 'Strength score, weekly volume and records',
+    'physique-period': 'Shade the map by week, month or year',
+    'coach-routine': 'Read every routine before you start',
+}
+
 ALSO = [
     ('ph-ruler', 'Set up in four steps', 'Height and weight on ruler pickers, your goal (Aesthetic, Athletic or Powerlifter), your training setup and an optional baseline photo.'),
     ('ph-camera', 'A proper workout summary', 'Name the session, see duration, volume and sets, add photos from the camera or library and choose who can see it.'),
@@ -138,8 +202,11 @@ def form(fid):
 
 chapters_html = ''
 for ch in CHAPTERS:
-    rows = ''.join(row(i, f'{ch["tab"]} · {ch["num"]}', *r) for i, r in enumerate(ch['rows']))
-    minis = ''  # small cards are gathered into one gallery after the chapters
+    # One main feature per chapter; everything else becomes a card underneath.
+    main, rest = ch['rows'][0], ch['rows'][1:]
+    rows = row(0, f'{ch["tab"]} · {ch["num"]}', *main)
+    cards = ch.get('cards') or [(name, title, CARD_COPY.get(name, body)) for name, title, body, _ticks in rest] + ch['minis']
+    minis = card_grid(cards) if cards else ''
     chapters_html += f'''
   <section class="chapter" id="{ch['id']}" aria-labelledby="{ch['id']}-title">
     <header class="chapter-head">
@@ -152,8 +219,6 @@ for ch in CHAPTERS:
     {minis}
   </section>'''
 
-ALL_MINIS = [m for ch in CHAPTERS for m in ch['minis']]
-more_html = f'<div class="minis" data-count="{len(ALL_MINIS)}">' + ''.join(mini(i, *m) for i, m in enumerate(ALL_MINIS)) + '</div>'
 
 also_html = ''.join(f'''
       <article class="tile" data-from="{'left' if i % 2 == 0 else 'right'}" style="--i:{i}">
@@ -183,7 +248,6 @@ tag_words = ' '.join(f'<span class="w">{w}</span>' for w in TAGLINE.split())
 html = (Path(__file__).with_name('landing_template.html').read_text()
         .replace('%%CHAPTERS%%', chapters_html)
         .replace('%%ALSO%%', also_html)
-        .replace('%%MORE%%', more_html)
         .replace('%%FAQ%%', faq_html)
         .replace('%%FAQ_SCHEMA%%', faq_schema)
         .replace('%%TAGLINE%%', tag_words)
