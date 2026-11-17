@@ -30,6 +30,10 @@ Then open http://127.0.0.1:8773/.
 
 ## Deploy (Cloudflare Pages)
 
+The `tensora-page` Pages project is connected to `TensoraHealthAndFitness/tensora-landing` on GitHub. It publishes the committed `site/` directory from `main` after each push. The Pages build output directory is `site` and no build command is configured, so run the build locally and commit `site/index.html` whenever the template or feature copy changes.
+
+For a manual redeploy of the current `site/` directory:
+
 ```bash
 npx wrangler pages deploy site --project-name tensora-page --branch main
 ```
